@@ -9,3 +9,6 @@ def matrix_read():
     return matrix
 
 
+matrix = matrix_read()
+
+print(matrix)
