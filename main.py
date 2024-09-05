@@ -72,6 +72,9 @@ def askoptions(matrix):
               Saliendo...""")
     if eleccion == 1:
         agregar_stock(matrix)
+        
+    if eleccion == 2:
+        
 
 
 def busqueda(info1, info2, info3, first, esint):
@@ -238,6 +241,45 @@ def agregar_stock(matrix):
             print("Nueva matriz: ")
             print(matrix)
             
+def consulta(matrix, articulo):
+    for fila in matrix:
+        if fila[0] == articulo:
+            print(f"El stock actual de '{articulo}' es: {fila[1]}")
+            return fila[1]
+    print(f"El artículo '{articulo}' no fue encontrado en el stock.")
+    return None
+def consultaprodd(matrix, producto):
+    for fila in matrix:
+        if fila[0] == producto and fila[2] == "Producto":
+            print(f"El stock actual del producto '{producto}' es: {fila[1]}")
+            return fila[1]
+    print(f"El producto {producto}' no fue encontrado en el stock")
+    return None
+def chequear_stock_general(matrix):
+    """Calcula el stock total sumando el stock de todos los productos y sus variaciones."""
+    stock_total = 0
+    for fila in matrix:
+        stock_total += fila[1]  # Se asume que la columna 1 es la cantidad de stock
+    print(f"El stock total de todos los artículos es: {stock_total}")
+    return stock_total
+def consulta_variacion(matrix, articulo, talle, color):
+    """
+    Consulta el stock de una variación específica de un artículo, basada en el talle y el color.
+    :param matrix: Matriz de datos con artículos, talles, colores y su stock.
+    :param articulo: Nombre del artículo.
+    :param talle: Talle de la variación del artículo.
+    :param color: Color de la variación del artículo.
+    :return: Stock de la variación o None si no se encuentra.
+    """
+    for fila in matrix:
+        if fila[0] == articulo and fila[2] == talle and fila[3] == color:
+            print(f"El stock actual de la variación '{articulo} - Talle: {talle} - Color: {color}' es: {fila[1]}")
+            return fila[1]
+    print(f"La variación '{articulo} - Talle: {talle} - Color: {color}' no fue encontrada en el stock.")
+    return None
+
+
+
 
 matrix = matrix_read()
 askoptions(matrix)
