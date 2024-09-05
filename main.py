@@ -8,21 +8,29 @@ def matrix_read():
     print(matrix)
     return matrix
 
-def sumres(matrix,cumplidores2, value, sign, agr):
+def sumres(matrix,cumplidores2, value, sign, agr, stock_column=3):
+    if not cumplidores2 or stock_column >= len(matrix[0]):
+        print("Error: Índice de stock inválido o lista de cumplidores vacía.")
+        return 0, matrix
+    
+    current_stock = matrix[cumplidores2[0]][stock_column]  # Valor actual del stock
+    
     if sign == "ELIMINAR":
-        if agr <= value:
-            matrix = (matrix[3][cumplidores2[0]] - agr)
+        if agr <= current_stock:
+            # Eliminar stock
+            matrix[cumplidores2[0]][stock_column] -= agr
             return -1, matrix
         else:
-            print("Ingrese un numero menor o igual al stock el articulo seleccionado")
-            return 0, 0
+            print("Ingrese un número menor o igual al stock del artículo seleccionado.")
+            return 0, matrix
     else:
         if agr > 0:
-            matrix = (matrix[3][cumplidores2[0]] + agr)
+            # Agregar stock
+            matrix[cumplidores2[0]][stock_column] += agr
             return -1, matrix
         else:
-            print("Ingrese un numero mayor a 0")
-            return 0, 0
+            print("Ingrese un número mayor a 0.")
+            return 0, matrix
 
 
 def checker_opt(elc, lista):
@@ -67,27 +75,44 @@ def askoptions(matrix):
 
 
 def busqueda(info1, info2, info3, first, esint):
-    print(info1)
-    if first == True:
+    print(info1)  # Muestra la información de entrada
+    if first:
+        # Si es la primera búsqueda, imprime toda la matriz o las opciones iniciales
         print(info2)
     else:
-        for i in range(len(info2)):
-            num = info2[i]
-            print(matrix[num])
-    data_pre = input()
-    if esint == True:
-        data = convint(data_pre)
+        # Si no es la primera búsqueda, imprime solo las filas relevantes de info2
+        for i in info2:
+            print(matrix[i])
+    
+    # Pide al usuario un input para buscar
+    data_pre = input("Ingrese el valor a buscar: ")
+    
+    # Convierte el input dependiendo de si se espera un entero o no
+    data = convint(data_pre) if esint else str(data_pre)
+    
+    cumplidores = []  # Lista de índices que cumplen con la búsqueda
+    
+    if not first:
+        # Si no es la primera búsqueda, busca entre los índices proporcionados en info2
+        for i in info2:
+            if data == matrix[i][int(info3)]:
+                cumplidores.append(i)
+                print(f"Cumplidor encontrado en índice {i}: {matrix[i]}")
     else:
-        data = data_pre
-    cumplidores = []
-    for i in range(len(matrix)):
-        if data == matrix[i][int(info3)]:
-            cumplidores.append(i)
+        # Si es la primera búsqueda, busca en toda la matriz
+        for i in range(len(matrix)):
+            if data == matrix[i][int(info3)]:
+                cumplidores.append(i)
+                print(f"Cumplidor encontrado en índice {i}: {matrix[i]}")
+    
+    # Verifica si se encontraron elementos que cumplen con la búsqueda
     if len(cumplidores) == 0:
-        print("Ese nro de artículo no existe")
+        print("No se encontraron elementos que cumplan con la búsqueda.")
         return 0, 0
     else:
         return 1, cumplidores
+
+            
     
 def final(agr, cumplidores2, info):
     print("El articulo seleccionado es: ", matrix[cumplidores2])
@@ -158,7 +183,7 @@ def agregar_stock(matrix):
             agr = final(agr, cumplidores2, info)
             value = matrix[3][cumplidores2[0]]
             while flag != -1:
-                flag, matrix = sumres(matrix,cumplidores2, value, info, agr)
+                flag, matrix = sumres(matrix, cumplidores2, value, info, agr)
             print("Nueva matriz: ")
             print(matrix)
             
@@ -177,6 +202,7 @@ def agregar_stock(matrix):
             first = True
             esint = True
             flag, cumplidores = busqueda(info1, info2, info3, first, esint)
+            print(cumplidores)
             if flag == 0:
                 print("El nro de articulo seleccionado no existe")
 
@@ -187,6 +213,7 @@ def agregar_stock(matrix):
             esint = False
             first = False
             flag1, cumplidores1 = busqueda(info1, info2, info3, first, esint)
+            print(cumplidores1)
             if flag1 == 0:
                 print("El color de articulo seleccionado no existe")
 
@@ -197,6 +224,7 @@ def agregar_stock(matrix):
             esint = True
             first = False
             flag2, cumplidores2 = busqueda(info1, info2, info3, first, esint)
+            print(cumplidores2)
             if flag2 == 0:
                 print("El talle de articulo seleccionado no existe")
 
