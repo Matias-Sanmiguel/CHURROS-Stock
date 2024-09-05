@@ -8,6 +8,22 @@ def matrix_read():
     print(matrix)
     return matrix
 
+def sumres(matrix,cumplidores2, value, sign, agr):
+    if sign == "ELIMINAR":
+        if agr <= value:
+            matrix = (matrix[3][cumplidores2[0]] - agr)
+            return -1, matrix
+        else:
+            print("Ingrese un numero menor o igual al stock el articulo seleccionado")
+            return 0, 0
+    else:
+        if agr > 0:
+            matrix = (matrix[3][cumplidores2[0]] + agr)
+            return -1, matrix
+        else:
+            print("Ingrese un numero mayor a 0")
+            return 0, 0
+
 
 def checker_opt(elc, lista):
     if elc in lista:
@@ -69,13 +85,13 @@ def busqueda(info1, info2, info3, first, esint):
             cumplidores.append(i)
     if len(cumplidores) == 0:
         print("Ese nro de artículo no existe")
-        return 0
+        return 0, 0
     else:
         return 1, cumplidores
     
-def final(agr):
+def final(agr, cumplidores2, info):
     print("El articulo seleccionado es: ", matrix[cumplidores2])
-    print("Cuantos artículos desea agregar?: ")
+    print("Cuantos artículos desea", info, ":")
     pre_agr = input()
     agr = convint(pre_agr)
     return agr
@@ -130,25 +146,70 @@ def agregar_stock(matrix):
             info1 = "Elija el talle de articulo al que quiera agregar el stock:"
             info2 = cumplidores1
             info3 = 2
-            esint = False
+            esint = True
             first = False
             flag2, cumplidores2 = busqueda(info1, info2, info3, first, esint)
             if flag2 == 0:
                 print("El talle de articulo seleccionado no existe")
                 
         while agr == -1:
-            agr = final(agr)
-            if agr > 0:
-                matrix = (matrix[3][cumplidores2] + agr)
-            else:
-                print("Ingrese un nro positivo")
-        
+            flag = 0
+            info = "AGREGAR"
+            agr = final(agr, cumplidores2, info)
+            value = matrix[3][cumplidores2[0]]
+            while flag != -1:
+                flag, matrix = sumres(matrix,cumplidores2, value, info, agr)
+            print("Nueva matriz: ")
+            print(matrix)
             
-                
-        
+            
+    if eleccion == 2:
+        flag = 0
+        flag1 = 0
+        flag2 = 0
+        agr = -1
+    
+        while flag == 0:
+            print("Eliminar stock") 
+            info1 = "Elija un articulo al que quiera eliminar el stock:"
+            info2 = matrix
+            info3 = 0
+            first = True
+            esint = True
+            flag, cumplidores = busqueda(info1, info2, info3, first, esint)
+            if flag == 0:
+                print("El nro de articulo seleccionado no existe")
 
+        while flag1 == 0:
+            info1 = "Elija un color de articulo al que quiera eliminar el stock:"
+            info2 = cumplidores
+            info3 = 1
+            esint = False
+            first = False
+            flag1, cumplidores1 = busqueda(info1, info2, info3, first, esint)
+            if flag1 == 0:
+                print("El color de articulo seleccionado no existe")
 
+        while flag2 == 0:
+            info1 = "Elija el talle de articulo al que quiera eliminar al stock:"
+            info2 = cumplidores1
+            info3 = 2
+            esint = True
+            first = False
+            flag2, cumplidores2 = busqueda(info1, info2, info3, first, esint)
+            if flag2 == 0:
+                print("El talle de articulo seleccionado no existe")
 
+        while agr == -1:
+            flag = 0
+            info = "ELIMINAR"
+            agr = final(agr, cumplidores2, info)
+            value = matrix[3][cumplidores2[0]]
+            while flag != -1:
+                flag, matrix = sumres(matrix,cumplidores2, value, info, agr)
+            print("Nueva matriz: ")
+            print(matrix)
+            
 
 matrix = matrix_read()
 askoptions(matrix)
