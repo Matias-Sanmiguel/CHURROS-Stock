@@ -10,14 +10,17 @@ def matrix_read():
 
 def askoptions(matrix):
     flag = 0
-    opciones_posibles=[1, 2, 3, 99]
+    opciones_posibles=[1, 2, 3, 4, 5, 99]
     while flag != 1:
         print("""
               
               AGREGAR / ELIMINAR stock: 1
               AGREGAR / ELIMINAR articulos: 2
-              CONSULTAR stock: 3 
+              CONSULTAR stock total: 3
+              CONSULTAR stock de un ART: 4
+              CONSULTAR stock específico: 5 
               Salir: 99
+              
               """)
         print("Elija una opción: ")
         eleccion_pre_int = input()
@@ -31,7 +34,17 @@ def askoptions(matrix):
               Saliendo...""")
     if eleccion == 1:
         agregar_stock(matrix)
+    if eleccion == 3:
+        stock = chequear_stock_general(matrix)
+        print(matrix)
+        print("El stock total es de: ", stock)
+    if eleccion == 4:
+        stock_art()
+    if eleccion == 5:
+        stock_esp()
 
+
+        
 def checker_opt(elc, lista):
     if elc in lista:
         return 1
@@ -209,19 +222,119 @@ def final(agr, cumplidores2, info):
     return agr
     
 def consulta_art(matrix, articulo):
+    stock_art = 0
     for fila in matrix:
         if fila[0] == articulo:
-            print(f"El stock actual de '{articulo}' es: {fila[1]}")
-            return fila[1]
-    print(f"El artículo '{articulo}' no fue encontrado en el stock.")
-    return None
-def consultaprod(matrix, producto):
+            stock_art += fila[3]
+    if stock_art > 0:
+        return stock_art
+    else: 
+        print(f"El artículo '{articulo}' no fue encontrado en el stock.")
+        return None
+
+def chequear_stock_general(matrix):
+    """Calcula el stock total sumando el stock de todos los productos y sus variaciones."""
+    stock_total = 0
     for fila in matrix:
-        if fila[0] == producto and fila[2] == "Producto":
-            print(f"El stock actual del producto '{producto}' es: {fila[1]}")
-            return fila[1]
-    print(f"El producto {producto}' no fue encontrado en el stock")
+        stock_total += fila[3]  
+    print(f"El stock total de todos los artículos es: {stock_total}")
+    return stock_total
+
+def consulta_variacion(matrix, articulo, talle, color):
+ 
+    for fila in matrix:
+        if fila[0] == articulo and fila[2] == talle and fila[1] == color:
+            print(f"El stock actual de la variación '{articulo} - Talle: {talle} - Color: {color}' es: {fila[3]}")
+            return fila[3]
+    print(f"La variación '{articulo} - Talle: {talle} - Color: {color}' no fue encontrada en el stock.")
     return None
 
-matrix = matrix_read()
-askoptions(matrix)
+
+def stock_art():
+    eleccion = -1
+    empezado = False
+    flag = 0
+    while eleccion == -1:
+        if empezado == True:
+                while flag != -1:    
+                    opciones_posibles = [1, 99]
+                    print("""
+                        Seguir : 1
+                        Salir: 99""")
+                    eleccion_pre = input("Elija una opción: ")
+                    eleccion= convint(eleccion_pre)
+                    flag = checker_opt(eleccion, opciones_posibles)
+                
+        else:        
+            if eleccion != 99:
+                art = -1
+                while art == -1:
+                    print("Ingrese un artículo: ")
+                    art_pre = input()
+                    art = convint(art_pre)
+                    stock = consulta_art(matrix, art)
+                    print("El stock del articulo ",art," es: ", stock)
+                    empezado = True
+        
+        
+def stock_esp():
+    eleccion = -1
+    empezado = False
+    flag = 0
+    while eleccion == -1:
+        if empezado == True:
+                while flag != -1:    
+                    opciones_posibles = [1, 99]
+                    print("""
+                        Seguir : 1
+                        Salir: 99""")
+                    eleccion_pre = input("Elija una opción: ")
+                    eleccion= convint(eleccion_pre)
+                    flag = checker_opt(eleccion, opciones_posibles)
+        
+        else:      
+            if eleccion != 99:
+                art, col, talle  = -1, -1, -1
+                while art == -1:
+                    print("Ingrese un artículo: ")
+                    art_pre = input()
+                    art = convint(art_pre)
+                while col == -1:
+                    print("Ingrese un color: ")
+                    col = input()
+                    
+                while talle == -1:
+                    print("Ingrese un talle: ")
+                    talle_pre = input()
+                    talle = convint(talle_pre)    
+                    stock = consulta_variacion(matrix, art, talle, col)
+                    print("El stock del articulo ",art, col, talle," es: ", stock)
+                    empezado = True
+
+
+
+
+
+
+def main1(matrix):
+    print(
+
+"""
++==========================================================+
+| ██████╗██╗  ██╗██╗   ██╗██████╗ ██████╗  ██████╗ ███████╗|
+|██╔════╝██║  ██║██║   ██║██╔══██╗██╔══██╗██╔═══██╗██╔════╝|
+|██║     ███████║██║   ██║██████╔╝██████╔╝██║   ██║███████╗|
+|██║     ██╔══██║██║   ██║██╔══██╗██╔══██╗██║   ██║╚════██║|
+|╚██████╗██║  ██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝███████║|
+| ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝|
++==========================================================+
+"""
+
+)
+    askoptions(matrix)
+
+
+if __name__ == '__main__':
+    matrix = matrix_read()
+    main1(matrix)
+
