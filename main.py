@@ -34,6 +34,8 @@ def askoptions(matrix):
               Saliendo...""")
     if eleccion == 1:
         agregar_stock(matrix)
+    if eleccion == 2:
+        ag_el_a(matrix)
     if eleccion == 3:
         stock = chequear_stock_general(matrix)
         print(matrix)
@@ -443,6 +445,109 @@ def menu():
             break
         else:
             print("Opcion no valida, por favor selecciona 1, 2 o 3")
+
+
+
+
+def ag_el_a(matrix):
+    flag = 0
+    opciones_posibles = [1, 2, 99]
+    
+    while flag != 1:
+        print("""
+              AGREGAR artículos: 1
+              ELIMINAR artículos: 2
+              Salir: 99
+              """)
+        print("Elija una opción: ")
+        eleccion_pre_int = input()
+        eleccion = convint(eleccion_pre_int)
+        
+        flag = checker_opt(eleccion, opciones_posibles)
+    
+    if eleccion == 1:
+        cantidadart_pre = input("Ingrese la cantidad de artículos que desea ingresar: ")
+        cantidadart = convint(cantidadart_pre)
+        
+        if cantidadart == -1:
+            print("Ingrese un número entero válido")
+        else:
+            for fila in range(cantidadart):
+                art = []
+                
+                while True:
+                    articulo_pre = input("Ingrese el número de artículo: ")
+                    articulo = convint(articulo_pre)
+                    if articulo == -1:
+                        print("Ingrese un número entero válido")
+                    else:
+                        break
+                
+                exists = any(row[0] == articulo for row in matrix)
+                if exists:
+                    print("El artículo ya existe en el inventario")
+                else:
+                    col = input("Ingrese el color: ")
+                    while True:
+                        tal_pre = input("Ingrese el número de talle: ")
+                        tal = convint(tal_pre)
+                        if tal == -1:
+                            print("Ingrese un número entero válido")
+                        else:
+                            break
+                    
+                    while True:
+                        pre_pre = input("Ingrese el precio del artículo: ")
+                        pre = convint(pre_pre)
+                        if pre == -1:
+                            print("Ingrese un número entero válido")
+                        else:
+                            break
+                    
+                    stock = 0  
+                    art = [articulo, col, tal, stock, pre]
+                    matrix.append(art)
+    
+    elif eleccion == 2:
+        print(matrix)
+        
+        cantidadart_pre = input("Ingrese la cantidad de artículos que desea eliminar: ")
+        cantidadart = convint(cantidadart_pre)
+        
+        if cantidadart == -1:
+            print("Ingrese un número entero válido")
+        else:
+            for _ in range(cantidadart):
+                while True:
+                    articulo_pre = input("Ingrese el número de artículo que desea eliminar: ")
+                    articulo = convint(articulo_pre)
+                    if articulo == -1:
+                        print("Ingrese un número entero válido")
+                    else:
+                        break
+                
+                for i, row in enumerate(matrix):
+                    if row[0] == articulo:
+                        col = input("Ingrese el color: ")
+                        while True:
+                            tal_pre = input("Ingrese el número de talle: ")
+                            tal = convint(tal_pre)
+                            if tal == -1:
+                                print("Ingrese un número entero válido")
+                            else:
+                                break
+                        
+                        if col == row[1] and tal == row[2]:
+                            matrix.pop(i)
+                            print(f"Artículo {articulo} eliminado")
+                            break
+                else:
+                    print("El artículo no se encontró.")
+    
+    if eleccion == 99:
+        print("Gracias por usar nuestro software. Saliendo...")
+
+    return matrix 
 
 
 
