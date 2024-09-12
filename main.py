@@ -8,39 +8,6 @@ def matrix_read():
     print(matrix)
     return matrix
 
-def sumres(matrix,cumplidores2, value, sign, agr):
-    if sign == "ELIMINAR":
-        if agr <= value:
-            matrix = (matrix[3][cumplidores2[0]] - agr)
-            return -1, matrix
-        else:
-            print("Ingrese un numero menor o igual al stock el articulo seleccionado")
-            return 0, 0
-    else:
-        if agr > 0:
-            matrix = (matrix[3][cumplidores2[0]] + agr)
-            return -1, matrix
-        else:
-            print("Ingrese un numero mayor a 0")
-            return 0, 0
-
-
-def checker_opt(elc, lista):
-    if elc in lista:
-        return 1
-    else:
-        print("Por favor, elija una opción disponible")
-        return 0
-
-def convint(elec):
-    try:
-        eleccion = int(elec)
-        return eleccion
-    except ValueError:
-        print("Valor Inválido")
-        return -1
-    
-### despues agregar una opcion para poder salir de una
 def askoptions(matrix):
     flag = 0
     opciones_posibles=[1, 2, 3, 99]
@@ -65,6 +32,36 @@ def askoptions(matrix):
     if eleccion == 1:
         agregar_stock(matrix)
 
+def checker_opt(elc, lista):
+    if elc in lista:
+        return 1
+    else:
+        print("Por favor, elija una opción disponible")
+        return 0
+
+def convint(elec):
+    try:
+        eleccion = int(elec)
+        return eleccion
+    except ValueError:
+        print("Valor Inválido")
+        return -1
+
+def sumres(matrix,cumplidores2, value, sign, agr):
+    if sign == "ELIMINAR":
+        if agr <= value:
+            matrix = (matrix[3][cumplidores2[0]] - agr)
+            return -1, matrix
+        else:
+            print("Ingrese un numero menor o igual al stock el articulo seleccionado")
+            return 0, 0
+    else:
+        if agr > 0:
+            matrix = (matrix[3][cumplidores2[0]] + agr)
+            return -1, matrix
+        else:
+            print("Ingrese un numero mayor a 0")
+            return 0, 0
 
 def busqueda(info1, info2, info3, first, esint):
     print(info1)
@@ -88,14 +85,7 @@ def busqueda(info1, info2, info3, first, esint):
         return 0, 0
     else:
         return 1, cumplidores
-    
-def final(agr, cumplidores2, info):
-    print("El articulo seleccionado es: ", matrix[cumplidores2])
-    print("Cuantos artículos desea", info, ":")
-    pre_agr = input()
-    agr = convint(pre_agr)
-    return agr
-    
+
 def agregar_stock(matrix):
     flag = 0
     opciones_posibles=[1, 2, 99]
@@ -210,6 +200,28 @@ def agregar_stock(matrix):
             print("Nueva matriz: ")
             print(matrix)
             
+    
+def final(agr, cumplidores2, info):
+    print("El articulo seleccionado es: ", matrix[cumplidores2])
+    print("Cuantos artículos desea", info, ":")
+    pre_agr = input()
+    agr = convint(pre_agr)
+    return agr
+    
+def consulta_art(matrix, articulo):
+    for fila in matrix:
+        if fila[0] == articulo:
+            print(f"El stock actual de '{articulo}' es: {fila[1]}")
+            return fila[1]
+    print(f"El artículo '{articulo}' no fue encontrado en el stock.")
+    return None
+def consultaprod(matrix, producto):
+    for fila in matrix:
+        if fila[0] == producto and fila[2] == "Producto":
+            print(f"El stock actual del producto '{producto}' es: {fila[1]}")
+            return fila[1]
+    print(f"El producto {producto}' no fue encontrado en el stock")
+    return None
 
 matrix = matrix_read()
 askoptions(matrix)
