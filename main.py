@@ -549,7 +549,7 @@ def ag_el_a(matrix):
 
     return matrix 
 
-
+usuarios = {}
 
 
 
@@ -575,4 +575,4 @@ if __name__ == '__main__':
     matrix = matrix_read()
     main1(matrix)
 
-usuarios = {}
+
