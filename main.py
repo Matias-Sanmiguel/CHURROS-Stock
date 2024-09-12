@@ -313,6 +313,138 @@ def stock_esp():
 
 
 
+# Correo
+
+def verificarArroba(correo):
+    x = correo.find('@')  # find busca la primera aparicion de la cadena de texto en el string
+    y = correo.rfind('@') # rfind busca la ultima aparicion de la cadena de texto en el string
+    if '@' in correo and x == y:
+        return True
+    else:
+        return False
+
+def verificarAlfanum(correo):
+    posicion = correo.find('@')   
+    aux = correo[:posicion]  # Evalua todo el correo hasta la arroba, sin incluirla
+    if aux.isalnum():  # Verifica que todos los caracteres sean numeros o letras
+        return True
+    else:
+        return False
+
+def verificarFinal(correo):
+    aux = correo[len(correo)-7:]  # Verifica solo los ultimos 7, que serian .com.ar
+    if aux == '.com.ar':          # Si no es .com.ar, daria error
+        return True
+    else:
+        return False
+
+def verificarDominio(correo):
+    aux = correo.rstrip('.com.ar')  # Saca el .com.ar para poder verificar que entre el @ y el .com.ar 
+    posicion = correo.find('@')     # haya algo, que no sea vacio
+    dominio = aux[posicion+1:]
+    if len(dominio) > 0:
+        return True
+    else:
+        return False
+
+def validarMail(correo):
+    return (verificarArroba(correo) and
+            verificarAlfanum(correo) and
+            verificarFinal(correo) and
+            verificarDominio(correo))
+
+# Contraseña
+
+def verificarLetrasNumeros(contra):   # Verifica que no haya caracteres especiales
+    return contra.isalnum()
+
+def verificarCantLetras(contra):  # Verifica que sean minimo 8 letras
+    if len(contra)< 8:
+        return False
+    else:
+        return True
+
+def verificarMayus(contra):   # Verifica que haya minimo una mayuscula
+    if not contra.islower():
+        return True
+    else:
+        return False
+
+def verificarLetras (contra):  # Verifica que haya minimo una letra
+    if contra.isalpha():
+        return False
+    else:
+        return True
+
+def verificarNum(contra):  # Verifica que haya minimo un numero
+    if contra.isdigit():
+        return False
+    else:
+        return True
+
+def validarContraseña(contraseña):
+    return (verificarLetrasNumeros(contraseña) and
+            verificarCantLetras(contraseña) and
+            verificarMayus(contraseña) and
+            verificarLetras(contraseña) and
+            verificarNum(contraseña))
+# Inicio de sesion
+def registrarUsuario():
+    print("Antes de registrar su correo, por favor asegúrese de que cumple con los siguientes requisitos:")
+    print("1. Debe contener una sola '@'.")
+    print("2. Debe terminar en '.com.ar'.")
+    print("3. La parte local (antes de '@') debe ser alfanumérica.")
+    print("4. Debe contener un dominio después de '@'.")
+    email = input("Ingrese tu email: ").strip()
+    while not validarMail(email):
+        print("El email ingresado no es valido")
+        email = input("Ingrese otro email: ").strip()
+    if email in usuarios:
+        print("El correo ya esta registrado")
+        return
+    
+    print("Antes de ingresar su contraseña, por favor asegúrese de que cumple con los siguientes requisitos:")
+    print("1. No debe contener caracteres especiales.")
+    print("2. Debe contener, al menos, un numero.")
+    print("3. Debe contener, al menos, una letra minuscula.")
+    print("4. Debe contener, al menos, una letra mayuscula.")
+    print("5. Debe contener, como minimo, 8 caracteres.")
+
+    contraseña = input("Ingrese su contraseña: ").strip()
+    while not validarContraseña(contraseña):
+        print("La contraseña ingresada no es valida")
+        contraseña = input("Ingrese otra contraseña: ").strip()
+    usuarios[email] = contraseña
+    print("Registro exitoso")
+    
+def iniciarSesion():
+    email = input("Ingrese tu email: ").strip()
+    contraseña = input("Ingrese su contraseña: ").strip()
+    if email in usuarios and usuarios[email] == contraseña:
+        print("Inicio de sesión exitoso")
+    else:
+        print("Correo electronico o contraseña no valido")
+
+def menu():
+    while True:
+        print("\nOpciones:")
+        print("1. Registrarse")
+        print("2. Iniciar sesión")
+        print("3. Salir")
+        eleccion = int(input("Seleccione una opcion (1/2/3): "))
+        
+        if eleccion == 1:
+            registrarUsuario()
+        elif eleccion == 2:
+            iniciarSesion()
+            askoptions(matrix)
+        elif eleccion == 3:
+            print("Saliendo..")
+            break
+        else:
+            print("Opcion no valida, por favor selecciona 1, 2 o 3")
+
+
 
 
 
@@ -331,9 +463,11 @@ def main1(matrix):
 """
 
 )
-    askoptions(matrix)
+    menu()
 
 
 if __name__ == '__main__':
     matrix = matrix_read()
     main1(matrix)
+
+usuarios = {}
