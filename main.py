@@ -483,7 +483,7 @@ def ag_el_a(matrix):
                     else:
                         break
                 
-                exists = any(row[0] == articulo for row in matrix)
+                exists = any(map(lambda row: row[0] == articulo, matrix))
                 if exists:
                     print("El artículo ya existe en el inventario")
                 else:
