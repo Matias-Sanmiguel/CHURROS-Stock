@@ -411,9 +411,12 @@ def registrarUsuario():
         
         
     for credencial in credenciales:
-        if credencial["user"] == email:
-            print("El correo ya está registrado")
+        if credencial["user"] == email and credencial ["pass"] == contraseña:
+            print("Inicio de sesión exitoso")
+            askoptions(matrix)
             return
+        print("Correo electrónico o contraseña no válido")
+            
     
     print("Antes de ingresar su contraseña, por favor asegúrese de que cumple con los siguientes requisitos:")
     print("1. No debe contener caracteres especiales.")
