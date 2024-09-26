@@ -10,9 +10,9 @@ def matrix_read():
     print(matrix)
     return matrix
 
-def guardar(matriz):
+def guardar(matrix):
     csv = 'prueba.csv'
-    df = pd.DataFrame(matriz)
+    df = pd.DataFrame(matrix)
     df.to_csv(csv, index=False, header=False)
 
 def askoptions(matrix):
@@ -121,7 +121,7 @@ def fastadd(matrix):
             precio_pre = input("Ingrese un precio para el nuevo artículo: ")
             precio = convint(precio_pre)
         linea.append(precio)
-        np.append(matrix, linea)  
+        np.append(matrix, linea, axis=0)  
         print(f"Nuevo artículo agregado: {linea}")
         guardar(matrix)
         askoptions(matrix)
@@ -365,31 +365,36 @@ def stock_esp():
 
 # Correo
 
-verificarArroba = lambda correo: correo.find('@') == correo.rfind('@') and '@' in correo
-verificarAlfanum = lambda correo: correo[:correo.find('@')].isalnum()
-verificarFinal = lambda correo: correo.endswith('.com')
-verificarDominio = lambda correo: len(correo[correo.find('@')+1:].rstrip('.com')) > 0
 
-validarMail = lambda correo: (verificarArroba(correo) and
-                              verificarAlfanum(correo) and
-                              verificarFinal(correo) and
-                              verificarDominio(correo))
-
-# Contraseña
-
-verificarLetrasNumeros = lambda contra: contra.isalnum()
-verificarCantLetras = lambda contra: len(contra) >= 8
-verificarMayus = lambda contra: any(c.isupper() for c in contra)
-verificarLetras = lambda contra: any(c.isalpha() for c in contra)
-verificarNum = lambda contra: any(c.isdigit() for c in contra)
-
-validarContraseña = lambda contraseña: (verificarLetrasNumeros(contraseña) and
-                                        verificarCantLetras(contraseña) and
-                                        verificarMayus(contraseña) and
-                                        verificarLetras(contraseña) and
-                                        verificarNum(contraseña))
 # Inicio de sesion
 def registrarUsuario():
+    
+    verificarArroba = lambda correo: correo.find('@') == correo.rfind('@') and '@' in correo
+    verificarAlfanum = lambda correo: correo[:correo.find('@')].isalnum()
+    verificarFinal = lambda correo: correo.endswith('.com')
+    verificarDominio = lambda correo: len(correo[correo.find('@')+1:].rstrip('.com')) > 0
+
+    validarMail = lambda correo: (verificarArroba(correo) and
+                                verificarAlfanum(correo) and
+                                verificarFinal(correo) and
+                                verificarDominio(correo))
+
+    # Contraseña
+
+    verificarLetrasNumeros = lambda contra: contra.isalnum()
+    verificarCantLetras = lambda contra: len(contra) >= 8
+    verificarMayus = lambda contra: any(c.isupper() for c in contra)
+    verificarLetras = lambda contra: any(c.isalpha() for c in contra)
+    verificarNum = lambda contra: any(c.isdigit() for c in contra)
+
+    validarContraseña = lambda contraseña: (verificarLetrasNumeros(contraseña) and
+                                            verificarCantLetras(contraseña) and
+                                            verificarMayus(contraseña) and
+                                            verificarLetras(contraseña) and
+                                            verificarNum(contraseña))
+    
+    
+    
     credenciales = cargar_usuarios()
     print("Antes de registrar su correo, por favor asegúrese de que cumple con los siguientes requisitos:")
     print("1. Debe contener una sola '@'.")
