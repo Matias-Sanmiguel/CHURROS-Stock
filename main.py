@@ -121,7 +121,7 @@ def fastadd(matrix):
             precio_pre = input("Ingrese un precio para el nuevo artículo: ")
             precio = convint(precio_pre)
         linea.append(precio)
-        matrix.append(linea)  
+        np.append(matrix, linea)  
         print(f"Nuevo artículo agregado: {linea}")
         guardar(matrix)
         askoptions(matrix)
