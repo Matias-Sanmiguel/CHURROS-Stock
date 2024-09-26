@@ -3,9 +3,8 @@ import numpy as np
 import json
 
 
-#Lee el csv por pandas y lo traduce a matrices
 def matrix_read():
-    df = pd.read_csv('prueba.csv')
+    df = pd.read_csv('prueba.csv', header=None)  # Leer sin header
     matrix = df.values
     print(matrix)
     return matrix
@@ -13,7 +12,7 @@ def matrix_read():
 def guardar(matrix):
     csv = 'prueba.csv'
     df = pd.DataFrame(matrix)
-    df.to_csv(csv, index=False, header=False)
+    df.to_csv(csv, index=False, header=False)  # Guardar sin header
 
 def askoptions(matrix):
     flag = 0
@@ -66,66 +65,63 @@ def fastadd(matrix):
     articulo, cantidad, precio, talle = -1, -1, -1, -1
     linea = []
 
- 
+
     while articulo == -1:
         articulo_pre = input("Ingrese un artículo: ")
         articulo = convint(articulo_pre)
     linea.append(articulo)
     
-
     color = input("Ingrese un color: ")
     linea.append(color)
-
 
     while talle == -1:
         talle_pre = input("Ingrese un talle: ")
         talle = convint(talle_pre)
     linea.append(talle)
-    
 
     accion = ""
     while accion not in ["AGREGAR", "ELIMINAR"]:
         accion = input("¿Desea AGREGAR o ELIMINAR stock?: ").upper()
 
-
     while cantidad == -1:
         cantidad_pre = input(f"Ingrese una cantidad para {accion}: ")
         cantidad = convint(cantidad_pre)
-    
 
     articulo_existe = False
     for i in range(len(matrix)):
         if matrix[i][0] == articulo and matrix[i][1] == color and matrix[i][2] == talle:
             articulo_existe = True
-            
+
             if accion == "AGREGAR":
-                matrix[i][3] += cantidad
+                matrix[i][3] = int(matrix[i][3]) + cantidad  # stock tiene que ser un numero
                 print(f"Stock actualizado para el artículo {articulo} con color {color} y talle {talle}. Nueva cantidad: {matrix[i][3]}")
                 guardar(matrix)
                 askoptions(matrix)
-            
+
             elif accion == "ELIMINAR":
-                if matrix[i][3] >= cantidad:
-                    
-                    matrix[i][3] -= cantidad
+                if int(matrix[i][3]) >= cantidad:
+                    matrix[i][3] = int(matrix[i][3]) - cantidad
                     print(f"Stock actualizado para el artículo {articulo} con color {color} y talle {talle}. Nueva cantidad: {matrix[i][3]}")
                     guardar(matrix)
                     askoptions(matrix)
                 else:
                     print(f"Error: No se puede eliminar {cantidad} unidades. Solo hay {matrix[i][3]} en stock.")
             break
-            
 
     if not articulo_existe and accion == "AGREGAR":
         while precio == -1:
             precio_pre = input("Ingrese un precio para el nuevo artículo: ")
             precio = convint(precio_pre)
-        linea.append(precio)
-        np.append(matrix, linea, axis=0)  
+        linea.append(cantidad)
+        linea.append(precio) 
+
+        linea = np.expand_dims(linea, axis=0)
+        
+        matrix = np.append(matrix, linea, axis=0)  
         print(f"Nuevo artículo agregado: {linea}")
         guardar(matrix)
         askoptions(matrix)
-    
+
     elif not articulo_existe and accion == "ELIMINAR":
         print("Error: No se puede eliminar stock de un artículo que no existe.")
     
