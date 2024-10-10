@@ -1405,5 +1405,12 @@
         "Size": "100",
         "Quantity": "2",
         "Price": "9500"
+    },
+    {
+        "Articulo": "3198",
+        "Color": "ver",
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "1000"
     }
 ]
