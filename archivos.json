@@ -1,1416 +1,1416 @@
 [
     {
-        "Articulo": 3001,
+        "Articulo": "3001",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 1,
-        "Price": 7000
+        "Size": "90",
+        "Quantity": "1",
+        "Price": "7000"
     },
     {
-        "Articulo": 2000,
+        "Articulo": "2000",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 9000
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "9000"
     },
     {
-        "Articulo": 3000,
+        "Articulo": "3000",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 1000
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "1000"
     },
     {
-        "Articulo": 3001,
+        "Articulo": "3001",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 2,
-        "Price": 6500
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "6500"
     },
     {
-        "Articulo": 3002,
+        "Articulo": "3002",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 7,
-        "Price": 7000
+        "Size": "100",
+        "Quantity": "7",
+        "Price": "7000"
     },
     {
-        "Articulo": 3003,
+        "Articulo": "3003",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 8,
-        "Price": 4000
+        "Size": "120",
+        "Quantity": "8",
+        "Price": "4000"
     },
     {
-        "Articulo": 3004,
+        "Articulo": "3004",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 8,
-        "Price": 9500
+        "Size": "110",
+        "Quantity": "8",
+        "Price": "9500"
     },
     {
-        "Articulo": 3005,
+        "Articulo": "3005",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 1,
-        "Price": 3000
+        "Size": "90",
+        "Quantity": "1",
+        "Price": "3000"
     },
     {
-        "Articulo": 3006,
+        "Articulo": "3006",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 7,
-        "Price": 2000
+        "Size": "100",
+        "Quantity": "7",
+        "Price": "2000"
     },
     {
-        "Articulo": 3007,
+        "Articulo": "3007",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 3,
-        "Price": 3500
+        "Size": "90",
+        "Quantity": "3",
+        "Price": "3500"
     },
     {
-        "Articulo": 3008,
+        "Articulo": "3008",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "1500"
     },
     {
-        "Articulo": 3009,
+        "Articulo": "3009",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 3500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "3500"
     },
     {
-        "Articulo": 3010,
+        "Articulo": "3010",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 3500
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "3500"
     },
     {
-        "Articulo": 3011,
+        "Articulo": "3011",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 3,
-        "Price": 6500
+        "Size": "110",
+        "Quantity": "3",
+        "Price": "6500"
     },
     {
-        "Articulo": 3012,
+        "Articulo": "3012",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 8,
-        "Price": 2500
+        "Size": "90",
+        "Quantity": "8",
+        "Price": "2500"
     },
     {
-        "Articulo": 3013,
+        "Articulo": "3013",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 8,
-        "Price": 1000
+        "Size": "110",
+        "Quantity": "8",
+        "Price": "1000"
     },
     {
-        "Articulo": 3014,
+        "Articulo": "3014",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 6,
-        "Price": 8500
+        "Size": "100",
+        "Quantity": "6",
+        "Price": "8500"
     },
     {
-        "Articulo": 3015,
+        "Articulo": "3015",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 1,
-        "Price": 4000
+        "Size": "120",
+        "Quantity": "1",
+        "Price": "4000"
     },
     {
-        "Articulo": 3016,
+        "Articulo": "3016",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 4500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "4500"
     },
     {
-        "Articulo": 3017,
+        "Articulo": "3017",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 4,
-        "Price": 2500
+        "Size": "100",
+        "Quantity": "4",
+        "Price": "2500"
     },
     {
-        "Articulo": 3018,
+        "Articulo": "3018",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 7,
-        "Price": 1000
+        "Size": "120",
+        "Quantity": "7",
+        "Price": "1000"
     },
     {
-        "Articulo": 3019,
+        "Articulo": "3019",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 9,
-        "Price": 5500
+        "Size": "120",
+        "Quantity": "9",
+        "Price": "5500"
     },
     {
-        "Articulo": 3020,
+        "Articulo": "3020",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 1000
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "1000"
     },
     {
-        "Articulo": 3021,
+        "Articulo": "3021",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 9000
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "9000"
     },
     {
-        "Articulo": 3022,
+        "Articulo": "3022",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 1000
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "1000"
     },
     {
-        "Articulo": 3023,
+        "Articulo": "3023",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 2,
-        "Price": 9000
+        "Size": "110",
+        "Quantity": "2",
+        "Price": "9000"
     },
     {
-        "Articulo": 3024,
+        "Articulo": "3024",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 2,
-        "Price": 3000
+        "Size": "110",
+        "Quantity": "2",
+        "Price": "3000"
     },
     {
-        "Articulo": 3025,
+        "Articulo": "3025",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 4500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "4500"
     },
     {
-        "Articulo": 3026,
+        "Articulo": "3026",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 7,
-        "Price": 8000
+        "Size": "90",
+        "Quantity": "7",
+        "Price": "8000"
     },
     {
-        "Articulo": 3027,
+        "Articulo": "3027",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 4,
-        "Price": 4500
+        "Size": "110",
+        "Quantity": "4",
+        "Price": "4500"
     },
     {
-        "Articulo": 3028,
+        "Articulo": "3028",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 9,
-        "Price": 8500
+        "Size": "100",
+        "Quantity": "9",
+        "Price": "8500"
     },
     {
-        "Articulo": 3029,
+        "Articulo": "3029",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 3,
-        "Price": 7000
+        "Size": "110",
+        "Quantity": "3",
+        "Price": "7000"
     },
     {
-        "Articulo": 3030,
+        "Articulo": "3030",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 3,
-        "Price": 5500
+        "Size": "120",
+        "Quantity": "3",
+        "Price": "5500"
     },
     {
-        "Articulo": 3031,
+        "Articulo": "3031",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 7000
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "7000"
     },
     {
-        "Articulo": 3032,
+        "Articulo": "3032",
         "Color": "VER",
-        "Size": 110,
-        "Quantity": 3,
-        "Price": 4500
+        "Size": "110",
+        "Quantity": "3",
+        "Price": "4500"
     },
     {
-        "Articulo": 3033,
+        "Articulo": "3033",
         "Color": "VER",
-        "Size": 110,
-        "Quantity": 2,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "2",
+        "Price": "2500"
     },
     {
-        "Articulo": 3034,
+        "Articulo": "3034",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 6,
-        "Price": 5500
+        "Size": "100",
+        "Quantity": "6",
+        "Price": "5500"
     },
     {
-        "Articulo": 3035,
+        "Articulo": "3035",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 9000
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "9000"
     },
     {
-        "Articulo": 3036,
+        "Articulo": "3036",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "2500"
     },
     {
-        "Articulo": 3037,
+        "Articulo": "3037",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 5500
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "5500"
     },
     {
-        "Articulo": 3038,
+        "Articulo": "3038",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 8000
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "8000"
     },
     {
-        "Articulo": 3039,
+        "Articulo": "3039",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 8000
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "8000"
     },
     {
-        "Articulo": 3040,
+        "Articulo": "3040",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 4000
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "4000"
     },
     {
-        "Articulo": 3041,
+        "Articulo": "3041",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 7,
-        "Price": 7500
+        "Size": "110",
+        "Quantity": "7",
+        "Price": "7500"
     },
     {
-        "Articulo": 3042,
+        "Articulo": "3042",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 7,
-        "Price": 1500
+        "Size": "120",
+        "Quantity": "7",
+        "Price": "1500"
     },
     {
-        "Articulo": 3043,
+        "Articulo": "3043",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 1000
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "1000"
     },
     {
-        "Articulo": 3044,
+        "Articulo": "3044",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 2,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "2",
+        "Price": "2500"
     },
     {
-        "Articulo": 3045,
+        "Articulo": "3045",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 4,
-        "Price": 6500
+        "Size": "120",
+        "Quantity": "4",
+        "Price": "6500"
     },
     {
-        "Articulo": 3046,
+        "Articulo": "3046",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "1500"
     },
     {
-        "Articulo": 3047,
+        "Articulo": "3047",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 3,
-        "Price": 6500
+        "Size": "110",
+        "Quantity": "3",
+        "Price": "6500"
     },
     {
-        "Articulo": 3048,
+        "Articulo": "3048",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 8,
-        "Price": 8000
+        "Size": "110",
+        "Quantity": "8",
+        "Price": "8000"
     },
     {
-        "Articulo": 3049,
+        "Articulo": "3049",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 6500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "6500"
     },
     {
-        "Articulo": 3050,
+        "Articulo": "3050",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 3,
-        "Price": 8000
+        "Size": "90",
+        "Quantity": "3",
+        "Price": "8000"
     },
     {
-        "Articulo": 3051,
+        "Articulo": "3051",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 3,
-        "Price": 5000
+        "Size": "100",
+        "Quantity": "3",
+        "Price": "5000"
     },
     {
-        "Articulo": 3052,
+        "Articulo": "3052",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 8,
-        "Price": 8500
+        "Size": "110",
+        "Quantity": "8",
+        "Price": "8500"
     },
     {
-        "Articulo": 3053,
+        "Articulo": "3053",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 6,
-        "Price": 5500
+        "Size": "100",
+        "Quantity": "6",
+        "Price": "5500"
     },
     {
-        "Articulo": 3054,
+        "Articulo": "3054",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "2500"
     },
     {
-        "Articulo": 3055,
+        "Articulo": "3055",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 2,
-        "Price": 8000
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "8000"
     },
     {
-        "Articulo": 3056,
+        "Articulo": "3056",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "3500"
     },
     {
-        "Articulo": 3057,
+        "Articulo": "3057",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 9000
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "9000"
     },
     {
-        "Articulo": 3058,
+        "Articulo": "3058",
         "Color": "BLN",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "1500"
     },
     {
-        "Articulo": 3059,
+        "Articulo": "3059",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 3000
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "3000"
     },
     {
-        "Articulo": 3060,
+        "Articulo": "3060",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 7,
-        "Price": 1000
+        "Size": "110",
+        "Quantity": "7",
+        "Price": "1000"
     },
     {
-        "Articulo": 3061,
+        "Articulo": "3061",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 7,
-        "Price": 9000
+        "Size": "110",
+        "Quantity": "7",
+        "Price": "9000"
     },
     {
-        "Articulo": 3062,
+        "Articulo": "3062",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 4,
-        "Price": 5000
+        "Size": "100",
+        "Quantity": "4",
+        "Price": "5000"
     },
     {
-        "Articulo": 3063,
+        "Articulo": "3063",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 3,
-        "Price": 5500
+        "Size": "90",
+        "Quantity": "3",
+        "Price": "5500"
     },
     {
-        "Articulo": 3064,
+        "Articulo": "3064",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 3000
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "3000"
     },
     {
-        "Articulo": 3065,
+        "Articulo": "3065",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 1,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "1",
+        "Price": "1500"
     },
     {
-        "Articulo": 3066,
+        "Articulo": "3066",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 8,
-        "Price": 5000
+        "Size": "120",
+        "Quantity": "8",
+        "Price": "5000"
     },
     {
-        "Articulo": 3067,
+        "Articulo": "3067",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 9,
-        "Price": 4000
+        "Size": "110",
+        "Quantity": "9",
+        "Price": "4000"
     },
     {
-        "Articulo": 3068,
+        "Articulo": "3068",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 9,
-        "Price": 1000
+        "Size": "100",
+        "Quantity": "9",
+        "Price": "1000"
     },
     {
-        "Articulo": 3069,
+        "Articulo": "3069",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 1500
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "1500"
     },
     {
-        "Articulo": 3070,
+        "Articulo": "3070",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 8,
-        "Price": 1000
+        "Size": "110",
+        "Quantity": "8",
+        "Price": "1000"
     },
     {
-        "Articulo": 3071,
+        "Articulo": "3071",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 6,
-        "Price": 7500
+        "Size": "100",
+        "Quantity": "6",
+        "Price": "7500"
     },
     {
-        "Articulo": 3072,
+        "Articulo": "3072",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "2500"
     },
     {
-        "Articulo": 3073,
+        "Articulo": "3073",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 7500
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "7500"
     },
     {
-        "Articulo": 3074,
+        "Articulo": "3074",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 1500
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "1500"
     },
     {
-        "Articulo": 3075,
+        "Articulo": "3075",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 9,
-        "Price": 2000
+        "Size": "100",
+        "Quantity": "9",
+        "Price": "2000"
     },
     {
-        "Articulo": 3076,
+        "Articulo": "3076",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 3,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "3",
+        "Price": "3500"
     },
     {
-        "Articulo": 3077,
+        "Articulo": "3077",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 2500
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "2500"
     },
     {
-        "Articulo": 3078,
+        "Articulo": "3078",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 7000
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "7000"
     },
     {
-        "Articulo": 3079,
+        "Articulo": "3079",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 1,
-        "Price": 4000
+        "Size": "100",
+        "Quantity": "1",
+        "Price": "4000"
     },
     {
-        "Articulo": 3080,
+        "Articulo": "3080",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 1,
-        "Price": 3000
+        "Size": "100",
+        "Quantity": "1",
+        "Price": "3000"
     },
     {
-        "Articulo": 3081,
+        "Articulo": "3081",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 9,
-        "Price": 8000
+        "Size": "120",
+        "Quantity": "9",
+        "Price": "8000"
     },
     {
-        "Articulo": 3082,
+        "Articulo": "3082",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 3,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "3",
+        "Price": "3500"
     },
     {
-        "Articulo": 3083,
+        "Articulo": "3083",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 8500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "8500"
     },
     {
-        "Articulo": 3084,
+        "Articulo": "3084",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 5000
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "5000"
     },
     {
-        "Articulo": 3085,
+        "Articulo": "3085",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 9,
-        "Price": 5000
+        "Size": "120",
+        "Quantity": "9",
+        "Price": "5000"
     },
     {
-        "Articulo": 3086,
+        "Articulo": "3086",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 6000
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "6000"
     },
     {
-        "Articulo": 3087,
+        "Articulo": "3087",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 5000
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "5000"
     },
     {
-        "Articulo": 3088,
+        "Articulo": "3088",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 3,
-        "Price": 4000
+        "Size": "90",
+        "Quantity": "3",
+        "Price": "4000"
     },
     {
-        "Articulo": 3089,
+        "Articulo": "3089",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 6500
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "6500"
     },
     {
-        "Articulo": 3090,
+        "Articulo": "3090",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 7500
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "7500"
     },
     {
-        "Articulo": 3091,
+        "Articulo": "3091",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 4,
-        "Price": 9500
+        "Size": "110",
+        "Quantity": "4",
+        "Price": "9500"
     },
     {
-        "Articulo": 3092,
+        "Articulo": "3092",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 1500
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "1500"
     },
     {
-        "Articulo": 3093,
+        "Articulo": "3093",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 6500
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "6500"
     },
     {
-        "Articulo": 3094,
+        "Articulo": "3094",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 7000
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "7000"
     },
     {
-        "Articulo": 3095,
+        "Articulo": "3095",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 7,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "7",
+        "Price": "3500"
     },
     {
-        "Articulo": 3096,
+        "Articulo": "3096",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 5,
-        "Price": 5500
+        "Size": "110",
+        "Quantity": "5",
+        "Price": "5500"
     },
     {
-        "Articulo": 3097,
+        "Articulo": "3097",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 6500
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "6500"
     },
     {
-        "Articulo": 3098,
+        "Articulo": "3098",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 1,
-        "Price": 3500
+        "Size": "100",
+        "Quantity": "1",
+        "Price": "3500"
     },
     {
-        "Articulo": 3099,
+        "Articulo": "3099",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 9,
-        "Price": 5000
+        "Size": "110",
+        "Quantity": "9",
+        "Price": "5000"
     },
     {
-        "Articulo": 3100,
+        "Articulo": "3100",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 3000
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "3000"
     },
     {
-        "Articulo": 3101,
+        "Articulo": "3101",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 7000
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "7000"
     },
     {
-        "Articulo": 3102,
+        "Articulo": "3102",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 8000
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "8000"
     },
     {
-        "Articulo": 3103,
+        "Articulo": "3103",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 1,
-        "Price": 1000
+        "Size": "100",
+        "Quantity": "1",
+        "Price": "1000"
     },
     {
-        "Articulo": 3104,
+        "Articulo": "3104",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 4500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "4500"
     },
     {
-        "Articulo": 3105,
+        "Articulo": "3105",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 9500
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "9500"
     },
     {
-        "Articulo": 3106,
+        "Articulo": "3106",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 7,
-        "Price": 9500
+        "Size": "120",
+        "Quantity": "7",
+        "Price": "9500"
     },
     {
-        "Articulo": 3107,
+        "Articulo": "3107",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 8,
-        "Price": 1000
+        "Size": "90",
+        "Quantity": "8",
+        "Price": "1000"
     },
     {
-        "Articulo": 3108,
+        "Articulo": "3108",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 1,
-        "Price": 5500
+        "Size": "100",
+        "Quantity": "1",
+        "Price": "5500"
     },
     {
-        "Articulo": 3109,
+        "Articulo": "3109",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 1,
-        "Price": 2500
+        "Size": "100",
+        "Quantity": "1",
+        "Price": "2500"
     },
     {
-        "Articulo": 3110,
+        "Articulo": "3110",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 9500
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "9500"
     },
     {
-        "Articulo": 3111,
+        "Articulo": "3111",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 3000
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "3000"
     },
     {
-        "Articulo": 3112,
+        "Articulo": "3112",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 6,
-        "Price": 1500
+        "Size": "100",
+        "Quantity": "6",
+        "Price": "1500"
     },
     {
-        "Articulo": 3113,
+        "Articulo": "3113",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 1,
-        "Price": 5500
+        "Size": "110",
+        "Quantity": "1",
+        "Price": "5500"
     },
     {
-        "Articulo": 3114,
+        "Articulo": "3114",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "1500"
     },
     {
-        "Articulo": 3115,
+        "Articulo": "3115",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 5500
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "5500"
     },
     {
-        "Articulo": 3116,
+        "Articulo": "3116",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 4,
-        "Price": 9000
+        "Size": "110",
+        "Quantity": "4",
+        "Price": "9000"
     },
     {
-        "Articulo": 3117,
+        "Articulo": "3117",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 2,
-        "Price": 6500
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "6500"
     },
     {
-        "Articulo": 3118,
+        "Articulo": "3118",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 4,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "4",
+        "Price": "2500"
     },
     {
-        "Articulo": 3119,
+        "Articulo": "3119",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 4500
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "4500"
     },
     {
-        "Articulo": 3120,
+        "Articulo": "3120",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 1,
-        "Price": 5000
+        "Size": "110",
+        "Quantity": "1",
+        "Price": "5000"
     },
     {
-        "Articulo": 3121,
+        "Articulo": "3121",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 5500
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "5500"
     },
     {
-        "Articulo": 3122,
+        "Articulo": "3122",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 8,
-        "Price": 3000
+        "Size": "120",
+        "Quantity": "8",
+        "Price": "3000"
     },
     {
-        "Articulo": 3123,
+        "Articulo": "3123",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 9,
-        "Price": 3000
+        "Size": "100",
+        "Quantity": "9",
+        "Price": "3000"
     },
     {
-        "Articulo": 3124,
+        "Articulo": "3124",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 2,
-        "Price": 8500
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "8500"
     },
     {
-        "Articulo": 3125,
+        "Articulo": "3125",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 5500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "5500"
     },
     {
-        "Articulo": 3126,
+        "Articulo": "3126",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "1500"
     },
     {
-        "Articulo": 3127,
+        "Articulo": "3127",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 4,
-        "Price": 5000
+        "Size": "110",
+        "Quantity": "4",
+        "Price": "5000"
     },
     {
-        "Articulo": 3128,
+        "Articulo": "3128",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 3000
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "3000"
     },
     {
-        "Articulo": 3129,
+        "Articulo": "3129",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 6500
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "6500"
     },
     {
-        "Articulo": 3130,
+        "Articulo": "3130",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 5500
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "5500"
     },
     {
-        "Articulo": 3131,
+        "Articulo": "3131",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 4,
-        "Price": 7500
+        "Size": "120",
+        "Quantity": "4",
+        "Price": "7500"
     },
     {
-        "Articulo": 3132,
+        "Articulo": "3132",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 7500
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "7500"
     },
     {
-        "Articulo": 3133,
+        "Articulo": "3133",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 6000
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "6000"
     },
     {
-        "Articulo": 3134,
+        "Articulo": "3134",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 1,
-        "Price": 7000
+        "Size": "110",
+        "Quantity": "1",
+        "Price": "7000"
     },
     {
-        "Articulo": 3135,
+        "Articulo": "3135",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 6,
-        "Price": 2500
+        "Size": "90",
+        "Quantity": "6",
+        "Price": "2500"
     },
     {
-        "Articulo": 3136,
+        "Articulo": "3136",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 8500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "8500"
     },
     {
-        "Articulo": 3137,
+        "Articulo": "3137",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 1,
-        "Price": 4500
+        "Size": "120",
+        "Quantity": "1",
+        "Price": "4500"
     },
     {
-        "Articulo": 3138,
+        "Articulo": "3138",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 2500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "2500"
     },
     {
-        "Articulo": 3139,
+        "Articulo": "3139",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 8,
-        "Price": 1500
+        "Size": "120",
+        "Quantity": "8",
+        "Price": "1500"
     },
     {
-        "Articulo": 3140,
+        "Articulo": "3140",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 5,
-        "Price": 6500
+        "Size": "100",
+        "Quantity": "5",
+        "Price": "6500"
     },
     {
-        "Articulo": 3141,
+        "Articulo": "3141",
         "Color": "AZU",
-        "Size": 100,
-        "Quantity": 7,
-        "Price": 7500
+        "Size": "100",
+        "Quantity": "7",
+        "Price": "7500"
     },
     {
-        "Articulo": 3142,
+        "Articulo": "3142",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 1,
-        "Price": 9000
+        "Size": "120",
+        "Quantity": "1",
+        "Price": "9000"
     },
     {
-        "Articulo": 3143,
+        "Articulo": "3143",
         "Color": "VER",
-        "Size": 110,
-        "Quantity": 2,
-        "Price": 3000
+        "Size": "110",
+        "Quantity": "2",
+        "Price": "3000"
     },
     {
-        "Articulo": 3144,
+        "Articulo": "3144",
         "Color": "BLN",
-        "Size": 90,
-        "Quantity": 2,
-        "Price": 6000
+        "Size": "90",
+        "Quantity": "2",
+        "Price": "6000"
     },
     {
-        "Articulo": 3145,
+        "Articulo": "3145",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 1,
-        "Price": 8000
+        "Size": "110",
+        "Quantity": "1",
+        "Price": "8000"
     },
     {
-        "Articulo": 3146,
+        "Articulo": "3146",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 4500
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "4500"
     },
     {
-        "Articulo": 3147,
+        "Articulo": "3147",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 3,
-        "Price": 2000
+        "Size": "110",
+        "Quantity": "3",
+        "Price": "2000"
     },
     {
-        "Articulo": 3148,
+        "Articulo": "3148",
         "Color": "ROJ",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 7500
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "7500"
     },
     {
-        "Articulo": 3149,
+        "Articulo": "3149",
         "Color": "BLN",
-        "Size": 110,
-        "Quantity": 1,
-        "Price": 5500
+        "Size": "110",
+        "Quantity": "1",
+        "Price": "5500"
     },
     {
-        "Articulo": 3150,
+        "Articulo": "3150",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "3500"
     },
     {
-        "Articulo": 3151,
+        "Articulo": "3151",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 4,
-        "Price": 6500
+        "Size": "110",
+        "Quantity": "4",
+        "Price": "6500"
     },
     {
-        "Articulo": 3152,
+        "Articulo": "3152",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 9500
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "9500"
     },
     {
-        "Articulo": 3153,
+        "Articulo": "3153",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 2,
-        "Price": 3000
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "3000"
     },
     {
-        "Articulo": 3154,
+        "Articulo": "3154",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 4000
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "4000"
     },
     {
-        "Articulo": 3155,
+        "Articulo": "3155",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 4,
-        "Price": 1000
+        "Size": "100",
+        "Quantity": "4",
+        "Price": "1000"
     },
     {
-        "Articulo": 3156,
+        "Articulo": "3156",
         "Color": "BLN",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 3000
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "3000"
     },
     {
-        "Articulo": 3157,
+        "Articulo": "3157",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 8,
-        "Price": 2000
+        "Size": "120",
+        "Quantity": "8",
+        "Price": "2000"
     },
     {
-        "Articulo": 3158,
+        "Articulo": "3158",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 3,
-        "Price": 7000
+        "Size": "100",
+        "Quantity": "3",
+        "Price": "7000"
     },
     {
-        "Articulo": 3159,
+        "Articulo": "3159",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 7,
-        "Price": 1000
+        "Size": "90",
+        "Quantity": "7",
+        "Price": "1000"
     },
     {
-        "Articulo": 3160,
+        "Articulo": "3160",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 6500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "6500"
     },
     {
-        "Articulo": 3161,
+        "Articulo": "3161",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "3500"
     },
     {
-        "Articulo": 3162,
+        "Articulo": "3162",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 1500
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "1500"
     },
     {
-        "Articulo": 3163,
+        "Articulo": "3163",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 2,
-        "Price": 3500
+        "Size": "90",
+        "Quantity": "2",
+        "Price": "3500"
     },
     {
-        "Articulo": 3164,
+        "Articulo": "3164",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 7,
-        "Price": 2000
+        "Size": "120",
+        "Quantity": "7",
+        "Price": "2000"
     },
     {
-        "Articulo": 3165,
+        "Articulo": "3165",
         "Color": "BLN",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 4000
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "4000"
     },
     {
-        "Articulo": 3166,
+        "Articulo": "3166",
         "Color": "BLN",
-        "Size": 90,
-        "Quantity": 1,
-        "Price": 8500
+        "Size": "90",
+        "Quantity": "1",
+        "Price": "8500"
     },
     {
-        "Articulo": 3167,
+        "Articulo": "3167",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 3,
-        "Price": 2000
+        "Size": "100",
+        "Quantity": "3",
+        "Price": "2000"
     },
     {
-        "Articulo": 3168,
+        "Articulo": "3168",
         "Color": "AZU",
-        "Size": 110,
-        "Quantity": 1,
-        "Price": 8000
+        "Size": "110",
+        "Quantity": "1",
+        "Price": "8000"
     },
     {
-        "Articulo": 3169,
+        "Articulo": "3169",
         "Color": "VER",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 4000
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "4000"
     },
     {
-        "Articulo": 3170,
+        "Articulo": "3170",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 5,
-        "Price": 6000
+        "Size": "120",
+        "Quantity": "5",
+        "Price": "6000"
     },
     {
-        "Articulo": 3171,
+        "Articulo": "3171",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 1500
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "1500"
     },
     {
-        "Articulo": 3172,
+        "Articulo": "3172",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 4,
-        "Price": 7000
+        "Size": "120",
+        "Quantity": "4",
+        "Price": "7000"
     },
     {
-        "Articulo": 3173,
+        "Articulo": "3173",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 6000
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "6000"
     },
     {
-        "Articulo": 3174,
+        "Articulo": "3174",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 1000
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "1000"
     },
     {
-        "Articulo": 3175,
+        "Articulo": "3175",
         "Color": "ROJ",
-        "Size": 110,
-        "Quantity": 6,
-        "Price": 7500
+        "Size": "110",
+        "Quantity": "6",
+        "Price": "7500"
     },
     {
-        "Articulo": 3176,
+        "Articulo": "3176",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 3,
-        "Price": 6000
+        "Size": "120",
+        "Quantity": "3",
+        "Price": "6000"
     },
     {
-        "Articulo": 3177,
+        "Articulo": "3177",
         "Color": "AZU",
-        "Size": 90,
-        "Quantity": 8,
-        "Price": 3500
+        "Size": "90",
+        "Quantity": "8",
+        "Price": "3500"
     },
     {
-        "Articulo": 3178,
+        "Articulo": "3178",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 8,
-        "Price": 3000
+        "Size": "100",
+        "Quantity": "8",
+        "Price": "3000"
     },
     {
-        "Articulo": 3179,
+        "Articulo": "3179",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 3,
-        "Price": 5500
+        "Size": "120",
+        "Quantity": "3",
+        "Price": "5500"
     },
     {
-        "Articulo": 3180,
+        "Articulo": "3180",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 3,
-        "Price": 2500
+        "Size": "90",
+        "Quantity": "3",
+        "Price": "2500"
     },
     {
-        "Articulo": 3181,
+        "Articulo": "3181",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 6,
-        "Price": 4500
+        "Size": "120",
+        "Quantity": "6",
+        "Price": "4500"
     },
     {
-        "Articulo": 3182,
+        "Articulo": "3182",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 3,
-        "Price": 6000
+        "Size": "120",
+        "Quantity": "3",
+        "Price": "6000"
     },
     {
-        "Articulo": 3183,
+        "Articulo": "3183",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 7,
-        "Price": 6000
+        "Size": "100",
+        "Quantity": "7",
+        "Price": "6000"
     },
     {
-        "Articulo": 3184,
+        "Articulo": "3184",
         "Color": "AMR",
-        "Size": 110,
-        "Quantity": 9,
-        "Price": 2500
+        "Size": "110",
+        "Quantity": "9",
+        "Price": "2500"
     },
     {
-        "Articulo": 3185,
+        "Articulo": "3185",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 1,
-        "Price": 5500
+        "Size": "90",
+        "Quantity": "1",
+        "Price": "5500"
     },
     {
-        "Articulo": 3186,
+        "Articulo": "3186",
         "Color": "BLN",
-        "Size": 90,
-        "Quantity": 7,
-        "Price": 2500
+        "Size": "90",
+        "Quantity": "7",
+        "Price": "2500"
     },
     {
-        "Articulo": 3187,
+        "Articulo": "3187",
         "Color": "AMR",
-        "Size": 120,
-        "Quantity": 4,
-        "Price": 4000
+        "Size": "120",
+        "Quantity": "4",
+        "Price": "4000"
     },
     {
-        "Articulo": 3188,
+        "Articulo": "3188",
         "Color": "AMR",
-        "Size": 90,
-        "Quantity": 9,
-        "Price": 8500
+        "Size": "90",
+        "Quantity": "9",
+        "Price": "8500"
     },
     {
-        "Articulo": 3189,
+        "Articulo": "3189",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 5,
-        "Price": 3500
+        "Size": "90",
+        "Quantity": "5",
+        "Price": "3500"
     },
     {
-        "Articulo": 3190,
+        "Articulo": "3190",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 6,
-        "Price": 8000
+        "Size": "100",
+        "Quantity": "6",
+        "Price": "8000"
     },
     {
-        "Articulo": 3191,
+        "Articulo": "3191",
         "Color": "AZU",
-        "Size": 120,
-        "Quantity": 9,
-        "Price": 9000
+        "Size": "120",
+        "Quantity": "9",
+        "Price": "9000"
     },
     {
-        "Articulo": 3192,
+        "Articulo": "3192",
         "Color": "ROJ",
-        "Size": 100,
-        "Quantity": 9,
-        "Price": 8000
+        "Size": "100",
+        "Quantity": "9",
+        "Price": "8000"
     },
     {
-        "Articulo": 3193,
+        "Articulo": "3193",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 8000
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "8000"
     },
     {
-        "Articulo": 3194,
+        "Articulo": "3194",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 9,
-        "Price": 5500
+        "Size": "120",
+        "Quantity": "9",
+        "Price": "5500"
     },
     {
-        "Articulo": 3195,
+        "Articulo": "3195",
         "Color": "VER",
-        "Size": 90,
-        "Quantity": 4,
-        "Price": 2500
+        "Size": "90",
+        "Quantity": "4",
+        "Price": "2500"
     },
     {
-        "Articulo": 3196,
+        "Articulo": "3196",
         "Color": "AMR",
-        "Size": 100,
-        "Quantity": 3,
-        "Price": 9000
+        "Size": "100",
+        "Quantity": "3",
+        "Price": "9000"
     },
     {
-        "Articulo": 3197,
+        "Articulo": "3197",
         "Color": "ROJ",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 3500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "3500"
     },
     {
-        "Articulo": 3198,
+        "Articulo": "3198",
         "Color": "VER",
-        "Size": 100,
-        "Quantity": 2,
-        "Price": 9500
+        "Size": "100",
+        "Quantity": "2",
+        "Price": "9500"
     },
     {
-        "Articulo": 3199,
+        "Articulo": "3199",
         "Color": "BLN",
-        "Size": 120,
-        "Quantity": 2,
-        "Price": 8500
+        "Size": "120",
+        "Quantity": "2",
+        "Price": "8500"
     }
 ]

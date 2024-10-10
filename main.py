@@ -3,16 +3,20 @@ import numpy as np
 import json
 
 
+
 def matrix_read():
-    df = pd.read_csv('prueba.csv', header=None)  # Leer sin header
-    matrix = df.values
-    print(matrix)
-    return matrix
+    with open('archivos.json', 'r') as file:
+        data = json.load(file)
+        matrix = [[item['Articulo'], item['Color'], item['Size'], item['Quantity'], item['Price']] for item in data]
+        return matrix
 
 def guardar(matrix):
-    csv = 'prueba.csv'
-    df = pd.DataFrame(matrix)
-    df.to_csv(csv, index=False, header=False)  # Guardar sin header
+    data_nueva = [
+    {"Articulo": item[0], "Color": item[1], "Size": item[2], "Quantity": item[3], "Price": item[4]} 
+    for item in matrix
+    ]
+    with open('archivos.json', 'w') as file:
+        json.dump(data_nueva, file, indent=4)
 
 def askoptions(matrix):
     flag = 0
@@ -144,128 +148,7 @@ def convint(elec):
         print("Valor Inválido")
         return -1
 
-# def sumres(matrix, cumplidores2, value, sign, agr):
-#     fila_articulo = cumplidores2[0]
-    
-#     if sign == "ELIMINAR":
-#         if agr <= value:
-#             matrix[fila_articulo][3] -= agr  # Restar stock
-#             return -1, matrix
-#         else:
-#             print("Ingrese un número menor o igual al stock del artículo seleccionado")
-#             return 0, matrix
-#     else:  # AGREGAR
-#         if agr > 0:
-#             matrix[fila_articulo][3] += agr  # Sumar stock
-#             return -1, matrix
-#         else:
-#             print("Ingrese un número mayor a 0")
-#             return 0, matrix
 
-
-# def busqueda(info1, info2, info3, first, esint):
-#     print(info1)
-#     if first == True:
-#         print(info2)
-#     else:
-#         for i in range(len(info2)):
-#             num = info2[i]
-#             print(matrix[num])
-#     data_pre = input()
-#     if esint == True:
-#         data = convint(data_pre)
-#     else:
-#         data = data_pre
-#     cumplidores = []
-#     for i in range(len(matrix)):
-#         if data == matrix[i][int(info3)]:
-#             cumplidores.append(i)
-#     if len(cumplidores) == 0:
-#         print("Ese nro de artículo no existe")
-#         return 0, 0
-#     else:
-#         return 1, cumplidores
-
-# def agregar_stock(matrix):
-#     flag = 0
-#     opciones_posibles = [1, 2, 99]
-    
-#     while flag != 1:
-#         print("""
-#               Agregar stock: 1
-#               Eliminar stock: 2
-#               Salir: 99
-#               """)
-#         print("Elija una opción: ")
-#         eleccion_pre_int = input()
-#         eleccion = convint(eleccion_pre_int)
-        
-#         flag = checker_opt(eleccion, opciones_posibles)
-        
-#     if eleccion == 99:
-#         print("Gracias por usar nuestro software. Saliendo...")
-#         return
-    
-#     # Elección de agregar o eliminar stock
-#     if eleccion in [1, 2]:
-#         operacion = "AGREGAR" if eleccion == 1 else "ELIMINAR"
-        
-#         # Selección del artículo
-#         flag = 0
-#         while flag == 0:
-#             print(f"{operacion} stock")
-#             info1 = "Elija un artículo al que quiera agregar/eliminar el stock:"
-#             info2 = matrix
-#             info3 = 0  # El campo de ID de artículo
-#             first = True
-#             esint = True
-#             flag, cumplidores = busqueda(info1, info2, info3, first, esint)
-#             if flag == 0:
-#                 print("El número de artículo seleccionado no existe.")
-        
-#         # Selección del color
-#         flag1 = 0
-#         while flag1 == 0:
-#             info1 = "Elija un color de artículo:"
-#             info2 = cumplidores
-#             info3 = 1  # El campo de color
-#             esint = False
-#             first = False
-#             flag1, cumplidores1 = busqueda(info1, info2, info3, first, esint)
-#             if flag1 == 0:
-#                 print("El color de artículo seleccionado no existe.")
-        
-#         # Selección del talle
-#         flag2 = 0
-#         while flag2 == 0:
-#             info1 = "Elija el talle del artículo:"
-#             info2 = cumplidores1
-#             info3 = 2  # El campo de talle
-#             esint = True
-#             first = False
-#             flag2, cumplidores2 = busqueda(info1, info2, info3, first, esint)
-#             if flag2 == 0:
-#                 print("El talle de artículo seleccionado no existe.")
-        
-#         # Solicitar la cantidad a agregar/eliminar
-#         agr = -1
-#         while agr == -1:
-#             agr = final(agr, cumplidores2, operacion)
-#             value = matrix[cumplidores2[0]][3]  # Acceder al stock del artículo seleccionado
-            
-#             # Realizar la operación de sumar o restar stock
-#             flag, matrix = sumres(matrix, cumplidores2, value, operacion, agr)
-        
-#         print("Nueva matriz: ")
-#         print(matrix)
-            
-    
-# def final(agr, cumplidores2, info):
-#     print("El articulo seleccionado es: ", matrix[cumplidores2])
-#     print("Cuantos artículos desea", info, ":")
-#     pre_agr = input()
-#     agr = convint(pre_agr)
-#     return agr
     
 def consulta_art(matrix, articulo):
     stock_art = 0
