@@ -46,20 +46,25 @@ def askoptions(matrix):
     if eleccion == 1:
         # agregar_stock(matrix)
         fastadd(matrix)
+        askoptions(matrix)
         
     if eleccion == 2:
         ag_el_a(matrix)
+        askoptions(matrix)
         
     if eleccion == 3:
         stock = chequear_stock_general(matrix)
         print(matrix)
         print("El stock total es de: ", stock)
+        askoptions(matrix)
         
     if eleccion == 4:
         stock_art()
+        askoptions(matrix)
         
     if eleccion == 5:
         stock_esp()
+        askoptions(matrix)
 
 def fastadd(matrix):
     print("Matriz actual:")
