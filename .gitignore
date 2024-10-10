@@ -1,0 +1,5 @@
+# Ignore libraries, binaries, and include files
+lib/
+bin/
+include/
+sumres.py
