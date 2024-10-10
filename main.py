@@ -7,7 +7,7 @@ import json
 def matrix_read():
     with open('archivos.json', 'r') as file:
         data = json.load(file)
-        matrix = [[item['Articulo'], item['Color'], item['Size'], item['Quantity'], item['Price']] for item in data]
+        matrix = [[int(item['Articulo']), item['Color'], int(item['Size']), int(item['Quantity']), int(item['Price'])] for item in data]
         return matrix
 
 def guardar(matrix):
@@ -384,6 +384,7 @@ def ag_el_a(matrix):
                     if articulo == -1:
                         print("Ingrese un número entero válido")
                     else:
+                        askoptions(matrix)
                         break
                 
                 exists = any(map(lambda row: row[0] == articulo, matrix))
@@ -397,6 +398,7 @@ def ag_el_a(matrix):
                         if tal == -1:
                             print("Ingrese un número entero válido")
                         else:
+                            askoptions(matrix)
                             break
                     
                     while True:
@@ -405,6 +407,7 @@ def ag_el_a(matrix):
                         if pre == -1:
                             print("Ingrese un número entero válido")
                         else:
+                            askoptions(matrix)
                             break
                     
                     stock = 0  
