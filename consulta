@@ -90,16 +90,17 @@ def fastadd(matrix):
         cantidad = convint(cantidad_pre)
 
     articulo_existe = False
-    lista_nuevaa = matrix
-    for i in range(len(lista_nuevaa)):
-        if lista_nuevaa[i][0] != articulo:
-            lista_nuevaa = [articulo for articulo in lista_nuevaa if articulo[0] == articulo]
-        break
+    matrix_nueva = matrix.copy()
+    for i in range(len(matrix_nueva) - 1, -1, -1): 
+        if (matrix_nueva[i][0] != articulo or
+            matrix_nueva[i][1] != color or
+            matrix_nueva[i][2] != talle):
+                matrix_nueva.pop(i)
         
 
     if articulo_existe:
         if accion == "AGREGAR":
-            matrix[i][3] = int(matrix[i][3]) + cantidad  # stock tiene que ser un numero
+            matrix_nueva[i][3] = int(matrix[i][3]) + cantidad  # stock tiene que ser un numero
             print(f"Stock actualizado para el artículo {articulo} con color {color} y talle {talle}. Nueva cantidad: {matrix[i][3]}")
             guardar(matrix)
             askoptions(matrix)
