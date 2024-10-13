@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 import json
 import uuid
@@ -377,112 +376,118 @@ def menu():
 
 
 
+import numpy as np
+
 def ag_el_a(matrix):
-    flag = 0
     opciones_posibles = {1, 2, 99}
     
-    while flag != 1:
+    while True:
         print("""
               AGREGAR artículos: 1
               ELIMINAR artículos: 2
               Salir: 99
               """)
-        print("Elija una opción: ")
-        eleccion_pre_int = input()
-        eleccion = convint(eleccion_pre_int)
+        eleccion_pre = input("Elija una opción: ")
+        eleccion = convint(eleccion_pre)
         
-        flag = checker_opt(eleccion, opciones_posibles)
-    
-    if eleccion == 1:
-        cantidadart_pre = input("Ingrese la cantidad de artículos que desea ingresar: ")
-        cantidadart = convint(cantidadart_pre)
-        
-        if cantidadart == -1:
-            print("Ingrese un número entero válido")
-        else:
-            for fila in range(cantidadart):
-                art = []
-                
+        if checker_opt(eleccion, opciones_posibles) == -1:
+            print("Opción no válida. Intente nuevamente.")
+            continue
+
+        if eleccion == 1: 
+            cantidadart_pre = input("Ingrese la cantidad de artículos que desea ingresar: ")
+            cantidadart = convint(cantidadart_pre)
+            
+            if cantidadart == -1:
+                print("Ingrese un número entero válido.")
+                continue
+            
+            
+            existing_uuids = set(row[0] for row in matrix)
+            
+            for _ in range(cantidadart):
                 while True:
                     articulo_pre = input("Ingrese el número de artículo: ")
                     articulo = convint(articulo_pre)
                     if articulo == -1:
-                        print("Ingrese un número entero válido")
+                        print("Número de artículo no válido. Intente nuevamente.")
                     else:
-                        askoptions(matrix)
+                        break
+
+                if any(row[1] == articulo for row in matrix):  # Asumiendo que el UUID es el primer elemento
+                    print("El artículo ya existe en el inventario.")
+                    continue
+                
+                col = input("Ingrese el color: ")
+                
+                while True:
+                    tal_pre = input("Ingrese el número de talle: ")
+                    tal = convint(tal_pre)
+                    if tal == -1:
+                        print("Número de talle no válido. Intente nuevamente.")
+                    else:
+                        break
+
+                while True:
+                    pre_pre = input("Ingrese el precio del artículo: ")
+                    pre = convint(pre_pre)
+                    if pre == -1:
+                        print("Precio no válido. Ingrese un número entero.")
+                    else:
                         break
                 
-                exists = any(map(lambda row: row[0] == articulo, matrix))
-                if exists:
-                    print("El artículo ya existe en el inventario")
-                else:
-                    col = input("Ingrese el color: ")
-                    while True:
-                        tal_pre = input("Ingrese el número de talle: ")
-                        tal = convint(tal_pre)
-                        if tal == -1:
-                            print("Ingrese un número entero válido")
-                        else:
-                            askoptions(matrix)
-                            break
-                    
-                    while True:
-                        pre_pre = input("Ingrese el precio del artículo: ")
-                        pre = convint(pre_pre)
-                        if pre == -1:
-                            print("Ingrese un número entero válido")
-                        else:
-                            askoptions(matrix)
-                            break
-                    
-                    stock = 0  
-                    art = [articulo, col, tal, stock, pre]
-                    matrix = np.append(matrix, [art], axis=0)
-                    guardar(matrix)
-                    askoptions(matrix)
-    
-    elif eleccion == 2:
-        print(matrix)
-        
-        cantidadart_pre = input("Ingrese la cantidad de artículos que desea eliminar: ")
-        cantidadart = convint(cantidadart_pre)
-        
-        if cantidadart == -1:
-            print("Ingrese un número entero válido")
-        else:
+                stock = 0
+                nuevo_uuid = unique_uuid(existing_uuids)
+                art = [articulo, col, tal, stock, pre, nuevo_uuid ]
+                
+                
+                matrix = np.append(matrix, [art], axis=0)
+                guardar(matrix)
+                print(f"Artículo {articulo} agregado exitosamente.")
+                
+        elif eleccion == 2:
+            cantidadart_pre = input("Ingrese la cantidad de artículos que desea eliminar: ")
+            cantidadart = convint(cantidadart_pre)
+            
+            if cantidadart == -1:
+                print("Ingrese un número entero válido.")
+                continue
+
             for _ in range(cantidadart):
                 while True:
                     articulo_pre = input("Ingrese el número de artículo que desea eliminar: ")
                     articulo = convint(articulo_pre)
                     if articulo == -1:
-                        print("Ingrese un número entero válido")
+                        print("Número de artículo no válido. Intente nuevamente.")
                     else:
                         break
                 
-                for i, row in enumerate(matrix): 
-                    if row[0] == articulo:
+                for i, row in enumerate(matrix):
+                    if row[1] == articulo:
                         col = input("Ingrese el color: ")
+                        
                         while True:
                             tal_pre = input("Ingrese el número de talle: ")
                             tal = convint(tal_pre)
                             if tal == -1:
-                                print("Ingrese un número entero válido")
+                                print("Número de talle no válido. Intente nuevamente.")
                             else:
                                 break
                         
-                        if col == row[1] and tal == row[2]:
+                        if col == row[2] and tal == row[3]:
                             matrix = np.delete(matrix, i, axis=0)
-                            print(f"Artículo {articulo} eliminado")
+                            print(f"Artículo {articulo} eliminado exitosamente.")
                             guardar(matrix)
-                            askoptions(matrix)
                             break
                 else:
-                    print("El artículo no se encontró.")
-    
-    if eleccion == 99:
-        print("Gracias por usar nuestro software. Saliendo...")
+                    print("Artículo no encontrado en el inventario.")
+        
+        elif eleccion == 99:
+            print("Gracias por usar nuestro software. Saliendo...")
+            break
 
-    return matrix 
+    return matrix
+
 
 def cargar_usuarios():
     with open('credenciales.json', 'r') as arch: ## el r es para que pueda sobreescribir
