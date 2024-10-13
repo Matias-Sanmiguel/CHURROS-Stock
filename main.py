@@ -1,19 +1,25 @@
 import pandas as pd
 import numpy as np
 import json
+import uuid
 
-
+def unique_uuid(existing_uuids):
+    new_uuid = str(uuid.uuid4())
+    while new_uuid in existing_uuids:
+        new_uuid = str(uuid.uuid4())
+    return new_uuid
 
 def matrix_read():
     with open('archivos.json', 'r') as file:
         data = json.load(file)
-        matrix = [[int(item['Articulo']), item['Color'], int(item['Size']), int(item['Quantity']), int(item['Price'])] for item in data]
-        return matrix
+        existing_uuids = {item.get("UUID") for item in data if "UUID" in item}
+        matrix = [[int(item['Articulo']), item['Color'], int(item['Size']), int(item['Quantity']), int(item['Price']), item.get("UUID", unique_uuid(existing_uuids))] for item in data]
+        return matrix, existing_uuids
 
 def guardar(matrix):
     data_nueva = [
-    {"Articulo": item[0], "Color": item[1], "Size": item[2], "Quantity": item[3], "Price": item[4]} 
-    for item in matrix
+        {"Articulo": item[0], "Color": item[1], "Size": item[2], "Quantity": item[3], "Price": item[4], "UUID": item[5]} 
+        for item in matrix
     ]
     with open('archivos.json', 'w') as file:
         json.dump(data_nueva, file, indent=4)
@@ -122,7 +128,11 @@ def fastadd(matrix):
             precio_pre = input("Ingrese un precio para el nuevo artículo: ")
             precio = convint(precio_pre)
         linea.append(cantidad)
-        linea.append(precio) 
+        linea.append(precio)
+        
+        uuidN = unique_uuid(existing_uuids)
+         
+        linea.append(uuidN)
 
         linea = np.expand_dims(linea, axis=0)
         
@@ -187,28 +197,38 @@ def consulta_variacion(matrix, articulo, talle, color):
 def stock_art():
     eleccion = -1
     empezado = False
-    flag = 0
-    while eleccion == -1:
-        if empezado == True:
-                while flag != -1:    
-                    opciones_posibles = {1, 99}
-                    print("""
-                        Seguir : 1
-                        Salir: 99""")
-                    eleccion_pre = input("Elija una opción: ")
-                    eleccion= convint(eleccion_pre)
-                    flag = checker_opt(eleccion, opciones_posibles)
+
+    while eleccion != 99:
+        if empezado:
+            opciones_posibles = {1, 99}
+            print("""
+                Seguir : 1
+                Salir: 99
+            """)
+            eleccion_pre = input("Elija una opción: ")
+            eleccion = convint(eleccion_pre)
+            
+            if checker_opt(eleccion, opciones_posibles) == -1:
+                print("Opcion no válida. Intente nuevamente.")
+                continue 
+        else:
+            art = -1
+            while art == -1 or art == 99:
+                art_pre = input("Ingrese un artículo: ")
+                art = convint(art_pre)
                 
-        else:        
-            if eleccion != 99:
-                art = -1
-                while art == -1:
-                    print("Ingrese un artículo: ")
-                    art_pre = input()
-                    art = convint(art_pre)
-                    stock = consulta_art(matrix, art)
-                    print("El stock del articulo ",art," es: ", stock)
+                if art == 99:
+                    askoptions(matrix)
+                    return 
+                
+                stock = consulta_art(matrix, art)
+                if stock is not None:
+                    print(f"El stock del artículo {art} es: {stock}")
                     empezado = True
+                    break  
+                else:
+                    print(f"Artículo {art} no encontrado. Intente nuevamente.")
+
         
         
 def stock_esp():
@@ -494,7 +514,7 @@ def main1(matrix):
 
 
 if __name__ == '__main__':
-    matrix = matrix_read()
+    matrix, existing_uuids = matrix_read()
     main1(matrix)
 
 
