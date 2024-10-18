@@ -1,6 +1,31 @@
 import numpy as np
 import json
 import uuid
+import tkinter as tk
+
+def gui(medialuna):
+    global rootonda
+    rootonda= tk.Tk()
+    rootonda.title("CHURROS")
+
+    rootonda.geometry("1000x1000")
+    churringui=tk.Label(rootonda, text= """
+            +==========================================================+
+            | ██████╗██╗  ██╗██╗   ██╗██████╗ ██████╗  ██████╗ ███████╗|
+            |██╔════╝██║  ██║██║   ██║██╔══██╗██╔══██╗██╔═══██╗██╔════╝|
+            |██║     ███████║██║   ██║██████╔╝██████╔╝██║   ██║███████╗|
+            |██║     ██╔══██║██║   ██║██╔══██╗██╔══██╗██║   ██║╚════██║|
+            |╚██████╗██║  ██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝███████║|
+            | ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝|
+            +==========================================================+
+            """, font=("", 7))
+    churringui.pack(pady=20)
+    
+    tk.Label(rootonda,text=medialuna,font=("Arial",7)).pack(pady=20)
+
+
+    rootonda.mainloop()
+    return 
 
 def unique_uuid(existing_uuids):
     new_uuid = str(uuid.uuid4())
@@ -304,6 +329,14 @@ def registrarUsuario():
     print("2. Debe terminar en '.com'.")
     print("3. La parte local (antes de '@') debe ser alfanumérica.")
     print("4. Debe contener un dominio después de '@'.")
+    medialuna="""
+                       Antes de registrar su correo, por favor asegúrese de que cumple con los siguientes requisitos:
+                       1. Debe contener una sola '@'.
+                       2. Debe terminar en '.com'.
+                       3. La parte local (antes de '@') debe ser alfanumérica.
+                       4. Debe contener un dominio después de '@'."
+                       """
+    gui(medialuna)
     
     email = input("Ingrese tu email: ").strip()
     
@@ -352,14 +385,30 @@ def iniciarSesion():
         print("Correo electronico o contraseña no valido")
 
 def menu():
+    
+    medialuna=""
+    
+    
     while True:
         print("\nOpciones:")
         print("1. Registrarse")
         print("2. Iniciar sesión")
         print("3. Salir")
+
+        medialuna="""
+            Elija una opcion:
+            Registrarse= 1
+            Iniciar sesión= 2 
+            Salir= 3 """
+        gui=gui(medialuna)
+
         eleccion = -1
         while eleccion == -1:
             eleccion_pre = input("Seleccione una opcion (1/2/3): ")
+            medialuna="""
+            Seleccione una opción(1/2/3):
+            """
+            gui=gui(medialuna)
             eleccion = convint(eleccion_pre)
         
         if eleccion == 1:
