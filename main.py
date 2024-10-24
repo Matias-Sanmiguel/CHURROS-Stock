@@ -25,7 +25,7 @@ def guardar(matrix):
 
 def askoptions(matrix):
     flag = 0
-    opciones_posibles={1, 2, 3, 4, 5, 99}
+    opciones_posibles={1, 2, 3, 4, 5, 6, 99}
     while flag != 1:
         print("""
               
@@ -34,6 +34,7 @@ def askoptions(matrix):
               CONSULTAR stock total: 3
               CONSULTAR stock de un ART: 4
               CONSULTAR stock específico: 5 
+              Ver matriz sin UUID : 6
               Salir: 99
               
               """)
@@ -69,6 +70,10 @@ def askoptions(matrix):
         
     if eleccion == 5:
         stock_esp()
+        askoptions(matrix)
+
+    if eleccion == 6:
+        matiz_slice(matrix)
         askoptions(matrix)
 
 def fastadd(matrix):
@@ -191,6 +196,11 @@ def consulta_variacion(matrix, articulo, talle, color):
             return fila[3]
     print(f"La variación '{articulo} - Talle: {talle} - Color: {color}' no fue encontrada en el stock.")
     return None
+
+def matiz_slice(matrix):
+    for fila in matrix:
+        subset = fila[:5]
+        print(subset)
 
 
 def stock_art():
