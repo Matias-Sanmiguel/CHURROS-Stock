@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Stock - CHURROS</title>
+</head>
+<body>
+    <h1>Gestión de Stock - CHURROS</h1>
+
+    <!-- Botón para cargar el stock -->
+    <h2>Ver Stock Actual</h2>
+    <button onclick="mostrarStock()">Cargar Stock</button>
+    <div id="stockContainer"></div>
+
+    <!-- Formulario para agregar o eliminar stock -->
+    <h2>Agregar / Eliminar Stock</h2>
+    <form id="stockForm" onsubmit="agregarOEliminarStock(event)">
+        <label for="accion">Acción:</label>
+        <select id="accion" name="accion">
+            <option value="AGREGAR">Agregar</option>
+            <option value="ELIMINAR">Eliminar</option>
+        </select><br><br>
+
+        <label for="articulo">Artículo:</label>
+        <input type="number" id="articulo" name="articulo" required><br><br>
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required><br><br>
+
+        <label for="talle">Talle:</label>
+        <input type="number" id="talle" name="talle" required><br><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required><br><br>
+
+        <label for="precio">Precio (solo para agregar):</label>
+        <input type="number" id="precio" name="precio"><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="operationResult"></p>
+
+    <script>
+        // Función para mostrar el stock actual
+        async function mostrarStock() {
+            try {
+                const response = await fetch('/matrix');
+                const stockData = await response.json();
+                
+                const stockContainer = document.getElementById("stockContainer");
+                stockContainer.innerHTML = ''; // Limpia el contenedor
+
+                // Muestra cada artículo en el contenedor
+                stockData.forEach(item => {
+                    const itemElement = document.createElement("p");
+                    itemElement.textContent = `Artículo: ${item[0]}, Color: ${item[1]}, Talle: ${item[2]}, Cantidad: ${item[3]}, Precio: ${item[4]}`;
+                    stockContainer.appendChild(itemElement);
+                });
+            } catch (error) {
+                console.error("Error al cargar el stock:", error);
+            }
+        }
+
+        // Función para agregar o eliminar stock
+        async function agregarOEliminarStock(event) {
+            event.preventDefault();  // Previene el envío del formulario
+
+            const accion = document.getElementById("accion").value;
+            const articulo = parseInt(document.getElementById("articulo").value);
+            const color = document.getElementById("color").value;
+            const talle = parseInt(document.getElementById("talle").value);
+            const cantidad = parseInt(document.getElementById("cantidad").value);
+            const precio = accion === "AGREGAR" ? parseInt(document.getElementById("precio").value) : null;
+
+            const data = {
+                accion: accion,
+                articulo: articulo,
+                color: color,
+                talle: talle,
+                cantidad: cantidad,
+                precio: precio
+            };
+
+            try {
+                const response = await fetch('/matrix', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                document.getElementById("operationResult").textContent = result.message || result.error;
+                
+                // Actualiza el stock después de la operación
+                mostrarStock();
+            } catch (error) {
+                console.error("Error en la operación de stock:", error);
+            }
+        }
+         // Función para alternar la visibilidad del stock total
+         async function toggleStockVisibility() {
+            const stockContainer = document.getElementById("stockContainer");
+            if (stockContainer.style.display === "none") {
+                // Muestra el stock total si está oculto
+                stockContainer.style.display = "block";
+                const response = await fetch('/stock/total');
+                const totalData = await response.json();
+                stockContainer.innerHTML = `Stock Total: ${totalData.stock_total}`;
+                document.querySelector("button[onclick='toggleStockVisibility()']").textContent = "Ocultar Stock Total";
+            } else {
+                // Oculta el stock total si está visible
+                stockContainer.style.display = "none";
+                document.querySelector("button[onclick='toggleStockVisibility()']").textContent = "Ver Stock Total";
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,6 +1,10 @@
+from flask import Flask, jsonify, request
 import numpy as np
 import json
 import uuid
+
+app = Flask(__name__)
+
 
 def unique_uuid(existing_uuids):
     new_uuid = str(uuid.uuid4())
@@ -22,6 +26,97 @@ def guardar(matrix):
     ]
     with open('archivos.json', 'w') as file:
         json.dump(data_nueva, file, indent=4)
+
+@app.route('/matrix', methods=['GET'])
+def get_matrix():
+    matrix, _ = matrix_read()
+    return jsonify(matrix)
+
+@app.route('/matrix', methods=['POST'])
+def add_or_remove_stock():
+    data = request.json
+    accion = data.get("accion")
+    articulo = data.get("articulo")
+    color = data.get("color")
+    talle = data.get("talle")
+    cantidad = data.get("cantidad")
+
+    matrix, existing_uuids = matrix_read()
+    articulo_existe = False
+
+    for i, item in enumerate(matrix):
+        if item[0] == articulo and item[1] == color and item[2] == talle:
+            articulo_existe = True
+            if accion == "AGREGAR":
+                matrix[i][3] += cantidad
+            elif accion == "ELIMINAR" and matrix[i][3] >= cantidad:
+                matrix[i][3] -= cantidad
+            guardar(matrix)
+            return jsonify({"message": f"Stock actualizado. Nueva cantidad: {matrix[i][3]}"})
+
+    if not articulo_existe and accion == "AGREGAR":
+        nuevo_item = [articulo, color, talle, cantidad, data.get("precio"), unique_uuid(existing_uuids)]
+        matrix.append(nuevo_item)
+        guardar(matrix)
+        return jsonify({"message": "Nuevo artículo agregado", "item": nuevo_item})
+
+    return jsonify({"error": "Artículo no encontrado"}), 404
+
+@app.route('/stock/total', methods=['GET'])
+def get_total_stock():
+    matrix, _ = matrix_read()
+    stock_total = sum(item[3] for item in matrix)
+    return jsonify({"stock_total": stock_total})
+
+@app.route('/stock/articulo/<int:articulo>', methods=['GET'])
+def get_stock_articulo(articulo):
+    matrix, _ = matrix_read()
+    stock_art = sum(item[3] for item in matrix if item[0] == articulo)
+    if stock_art > 0:
+        return jsonify({"stock_articulo": stock_art})
+    return jsonify({"error": f"Artículo '{articulo}' no encontrado"}), 404
+
+@app.route('/stock/especifico', methods=['GET'])
+def get_stock_especifico():
+    articulo = request.args.get('articulo', type=int)
+    talle = request.args.get('talle', type=int)
+    color = request.args.get('color')
+
+    matrix, _ = matrix_read()
+    for item in matrix:
+        if item[0] == articulo and item[1] == color and item[2] == talle:
+            return jsonify({"stock_especifico": item[3]})
+    return jsonify({"error": "Artículo o variación no encontrado"}), 404
+
+@app.route('/matrix/slice', methods=['GET'])
+def get_matrix_slice():
+    matrix, _ = matrix_read()
+    sliced_matrix = [item[:5] for item in matrix]
+    return jsonify(sliced_matrix)
+
+@app.route('/usuario/registrar', methods=['POST'])
+def registrar_usuario():
+    data = request.json
+    email = data.get("email")
+    contraseña = data.get("contraseña")
+
+    credenciales = cargar_usuarios()
+    credenciales.append({"user": email, "pass": contraseña})
+    guardar_credenciales(credenciales)
+    return jsonify({"message": "Registro exitoso"})
+
+@app.route('/usuario/login', methods=['POST'])
+def iniciar_sesion():
+    data = request.json
+    email = data.get("email")
+    contraseña = data.get("contraseña")
+
+    credenciales = cargar_usuarios()
+    for credencial in credenciales:
+        if credencial['user'] == email and credencial['pass'] == contraseña:
+            return jsonify({"message": "Inicio de sesión exitoso"})
+    return jsonify({"error": "Correo electrónico o contraseña no válidos"}), 401
+
 
 def askoptions(matrix):
     flag = 0
@@ -164,7 +259,6 @@ def convint(elec):
         eleccion = int(elec)
         return eleccion
     except ValueError:
-        print("Valor Inválido")
         return -1
 
 
@@ -500,15 +594,16 @@ def ag_el_a(matrix):
 
 
 def cargar_usuarios():
-    with open('credenciales.json', 'r') as arch: ## el r es para que pueda sobreescribir
+    with open('credenciales.json', 'r') as arch:
         datos = json.load(arch)
+    return datos if isinstance(datos, list) else []
 
     if isinstance(datos, list):
         return datos
 
 
 def guardar_credenciales(credenciales):
-    with open('credenciales.json', 'w') as arch: ## el w es para que pueda sobreescribir
+    with open('credenciales.json', 'w') as arch:
         json.dump(credenciales, arch)
 
 def main1(matrix):
@@ -532,4 +627,6 @@ if __name__ == '__main__':
     matrix, existing_uuids = matrix_read()
     main1(matrix)
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
