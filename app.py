@@ -1,14 +1,14 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 import json
 import uuid
 import numpy as np
 
 app = Flask(__name__)
+app.secret_key = 'super_secret_key'
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 def unique_uuid(existing_uuids):
     new_uuid = str(uuid.uuid4())
@@ -27,51 +27,65 @@ def matrix_read():
     with open('archivos.json', 'r') as file:
         data = json.load(file)
         existing_uuids = {item.get("UUID") for item in data if "UUID" in item}
-        matrix = [[int(item['Articulo']), item['Color'], int(item['Size']), int(item['Quantity']), int(item['Price']), item.get("UUID", unique_uuid(existing_uuids))] for item in data]
+        matrix = np.array([[int(item['Articulo']), item['Color'], int(item['Size']), int(item['Quantity']), int(item['Price']), item.get("UUID", unique_uuid(existing_uuids))] for item in data], dtype=object)
         return matrix, existing_uuids
 
 def guardar(matrix):
     data_nueva = [
-        {"Articulo": item[0], "Color": item[1], "Size": item[2], "Quantity": item[3], "Price": item[4], "UUID": item[5]} 
+        {"Articulo": int(item[0]), "Color": item[1], "Size": int(item[2]), "Quantity": int(item[3]), "Price": int(item[4]), "UUID": item[5]}
         for item in matrix
     ]
     with open('archivos.json', 'w') as file:
         json.dump(data_nueva, file, indent=4)
 
-@app.route('/matrix', methods=['GET'])
-def get_matrix():
-    matrix, _ = matrix_read()
-    return jsonify(matrix)
-
-@app.route('/matrix', methods=['POST'])
-def add_or_remove_stock():
+@app.route('/fastadd', methods=['POST'])
+def fastadd():
     data = request.json
-    accion = data.get("accion")
-    articulo = data.get("articulo")
+    articulo = convint(data.get("articulo", -1))
     color = data.get("color")
-    talle = data.get("talle")
-    cantidad = data.get("cantidad")
+    talle = convint(data.get("talle", -1))
+    accion = data.get("accion", "").upper()
+    cantidad = convint(data.get("cantidad", -1))
+    precio = convint(data.get("precio", -1)) if accion == "AGREGAR" else None
+
+    if articulo == -1 or talle == -1 or cantidad == -1 or not color or accion not in ["AGREGAR", "ELIMINAR"]:
+        return jsonify({"error": "Datos inválidos o incompletos"}), 400
 
     matrix, existing_uuids = matrix_read()
     articulo_existe = False
 
-    for i, item in enumerate(matrix):
-        if item[0] == articulo and item[1] == color and item[2] == talle:
+    for i in range(matrix.shape[0]):
+        if matrix[i, 0] == articulo and matrix[i, 1] == color and matrix[i, 2] == talle:
             articulo_existe = True
             if accion == "AGREGAR":
-                matrix[i][3] += cantidad
-            elif accion == "ELIMINAR" and matrix[i][3] >= cantidad:
-                matrix[i][3] -= cantidad
-            guardar(matrix)
-            return jsonify({"message": f"Stock actualizado. Nueva cantidad: {matrix[i][3]}"})
+                matrix[i, 3] += cantidad
+                guardar(matrix)
+                return jsonify({"message": f"Stock actualizado para el artículo {articulo}. Nueva cantidad: {matrix[i, 3]}"}), 200
+            elif accion == "ELIMINAR":
+                if matrix[i, 3] >= cantidad:
+                    matrix[i, 3] -= cantidad
+                    if matrix[i, 3] == 0:
+                        matrix = np.delete(matrix, i, axis=0)
+                        guardar(matrix)
+                        return jsonify({"message": f"Artículo {articulo} eliminado del stock"}), 200
+                    guardar(matrix)
+                    return jsonify({"message": f"Stock actualizado para el artículo {articulo}. Nueva cantidad: {matrix[i, 3]}"}), 200
+                else:
+                    return jsonify({"error": f"No se puede eliminar {cantidad} unidades. Solo hay {matrix[i, 3]} en stock"}), 400
 
     if not articulo_existe and accion == "AGREGAR":
-        nuevo_item = [articulo, color, talle, cantidad, data.get("precio"), unique_uuid(existing_uuids)]
-        matrix.append(nuevo_item)
+        if precio == -1:
+            return jsonify({"error": "Necesitas agregar un precio"}), 400
+        nuevo_item = np.array([[articulo, color, talle, cantidad, precio, unique_uuid(existing_uuids)]], dtype=object)
+        matrix = np.append(matrix, nuevo_item, axis=0)
         guardar(matrix)
-        return jsonify({"message": "Nuevo artículo agregado", "item": nuevo_item})
+        return jsonify({"message": f"Nuevo artículo agregado: {nuevo_item.tolist()}"}), 201
 
-    return jsonify({"error": "Artículo no encontrado"}), 404
+    if not articulo_existe and accion == "ELIMINAR":
+        return jsonify({"error": "No se puede eliminar stock de un artículo no existente"}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route('/matrix', methods=['DELETE'])
 def delete_stock():
@@ -101,15 +115,6 @@ def delete_stock():
     if not articulo_existe:
         return jsonify({"error": "Artículo no encontrado"}), 404
 
-
-def cargar_usuarios():
-    with open('credenciales.json', 'r') as arch:
-        datos = json.load(arch)
-    return datos if isinstance(datos, list) else []
-
-def guardar_credenciales(credenciales):
-    with open('credenciales.json', 'w') as arch:
-        json.dump(credenciales, arch)
 
 @app.route('/stock/total', methods=['GET'])
 def get_total_stock():
@@ -143,28 +148,70 @@ def get_matrix_slice():
     sliced_matrix = [item[:5] for item in matrix]
     return jsonify(sliced_matrix)
 
+def cargar_usuarios():
+    try:
+        with open('credenciales.json', 'r') as archivo:
+            usuarios = json.load(archivo)
+        print("Usuarios cargados:", usuarios)
+        return usuarios if isinstance(usuarios, list) else []
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print("Error al cargar usuarios:", e) 
+        return []
+
+def guardar_usuarios(credenciales):
+    with open('credenciales.json', 'w') as archivo:
+        json.dump(credenciales, archivo, indent=4)
+
+@app.route('/')
+def index():
+    if 'user' in session:
+        return f'Bienvenido, {session["user"]}! <a href="/logout">Cerrar sesión</a>'
+    return render_template('index.html')
+
 @app.route('/usuario/registrar', methods=['POST'])
 def registrar_usuario():
     data = request.json
     email = data.get("email")
     contraseña = data.get("contraseña")
 
-    credenciales = cargar_usuarios()
-    credenciales.append({"user": email, "pass": contraseña})
-    guardar_credenciales(credenciales)
-    return jsonify({"message": "Registro exitoso"})
+    if not email or not contraseña:
+        return jsonify({"error": "Correo electrónico y contraseña son requeridos"}), 400
+
+    usuarios = cargar_usuarios()
+
+    for usuario in usuarios:
+        if usuario['user'] == email:
+            return jsonify({"error": "El usuario ya existe"}), 400
+
+    usuarios.append({"user": email, "pass": contraseña})
+    guardar_usuarios(usuarios)
+    return jsonify({"message": "Registro exitoso"}), 200
+
 
 @app.route('/usuario/login', methods=['POST'])
 def iniciar_sesion():
     data = request.json
-    email = data.get("email")
+    print("Datos recibidos:", data)
+    email = data.get("user")
     contraseña = data.get("contraseña")
 
-    credenciales = cargar_usuarios()
-    for credencial in credenciales:
-        if credencial['user'] == email and credencial['pass'] == contraseña:
-            return jsonify({"message": "Inicio de sesión exitoso"})
+    usuarios = cargar_usuarios()
+    print("Verificando usuarios...") 
+
+    for usuario in usuarios:
+        print(f"Comparando con: {usuario}")
+        if usuario['user'] == email and usuario['pass'] == contraseña:
+            session['user'] = email
+            return jsonify({"message": "Inicio de sesión exitoso"}), 200
+
     return jsonify({"error": "Correo electrónico o contraseña no válidos"}), 401
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
