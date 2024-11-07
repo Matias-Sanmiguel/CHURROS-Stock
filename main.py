@@ -1,6 +1,7 @@
 import numpy as np
 import json
 import uuid
+from fpdf import FPDF
 
 def unique_uuid(existing_uuids):
     new_uuid = str(uuid.uuid4())
@@ -25,7 +26,7 @@ def guardar(matrix):
 
 def askoptions(matrix):
     flag = 0
-    opciones_posibles={1, 2, 3, 4, 5, 6, 99}
+    opciones_posibles={1, 2, 3, 4, 5, 6, 7, 99}
     while flag != 1:
         print("""
               
@@ -35,6 +36,7 @@ def askoptions(matrix):
               CONSULTAR stock de un ART: 4
               CONSULTAR stock específico: 5 
               Ver matriz sin UUID : 6
+              Generar reporte : 7
               Salir: 99
               
               """)
@@ -74,6 +76,10 @@ def askoptions(matrix):
 
     if eleccion == 6:
         matiz_slice(matrix)
+        askoptions(matrix)
+
+    if eleccion == 7:
+        generar_reporte_json("archivos.json")
         askoptions(matrix)
 
 def fastadd(matrix):
@@ -149,6 +155,89 @@ def fastadd(matrix):
         print("Error: No se puede eliminar stock de un artículo que no existe.")
     
 
+from fpdf import FPDF
+import json
+
+def consulta_art(matrix, articulo):
+    stock_art = 0
+    for fila in matrix:
+        if fila[0] == articulo:
+            stock_art += fila[3]
+    if stock_art > 0:
+        return f"Consulta de stock para '{articulo}': {stock_art}"
+    else: 
+        return f"El artículo '{articulo}' no fue encontrado en el stock."  
+
+def chequear_stock_general(matrix):
+    stock_total = sum(fila[3] for fila in matrix)
+    return f"El stock total de todos los artículos es: {stock_total}"  
+
+def consulta_variacion(matrix, articulo, talle, color):
+    for fila in matrix:
+        if fila[0] == articulo and fila[2] == talle and fila[1] == color:
+            print(f"El stock actual de la variación '{articulo} - Talle: {talle} - Color: {color}' es: {fila[3]}")
+            return fila[3]
+    print(f"La variación '{articulo} - Talle: {talle} - Color: {color}' no fue encontrada en el stock.")
+    return None
+
+
+
+class PDF(FPDF):
+    def header(self):
+        self.set_font("Arial", "B", 15)
+        self.cell(0, 10, "Reporte de Stock", 0, 1, "C")
+        self.ln(10)
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font("Arial", "I", 8)
+        self.cell(0, 10, f"Página {self.page_no()}", 0, 0, "C")
+
+import json
+from fpdf import FPDF
+
+class PDF(FPDF):
+    def header(self):
+        self.set_font("Arial", "B", 15)
+        self.cell(0, 10, "Reporte de Inventario", 0, 1, "C")
+        self.ln(10)
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font("Arial", "I", 8)
+        self.cell(0, 10, f"Página {self.page_no()}", 0, 0, "C")
+
+def generar_reporte_json(nombre_archivo_json):
+    try:
+        with open(nombre_archivo_json, "r") as archivo:
+            data = json.load(archivo)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error al cargar el archivo JSON: {e}")
+        return
+
+    pdf = PDF()
+    pdf.add_page()
+
+    pdf.set_fill_color(200, 220, 255)
+    pdf.set_font("Arial", "B", 10)
+    pdf.cell(40, 10, "Artículo", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Color", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Talle", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Cantidad", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Precio", 1, 1, "C", 1)
+
+    pdf.set_font("Arial", "", 10)
+    for item in data:
+        pdf.cell(40, 10, str(item.get("Articulo", "")), 1)
+        pdf.cell(40, 10, str(item.get("Color", "")), 1)
+        pdf.cell(40, 10, str(item.get("Size", "")), 1)
+        pdf.cell(40, 10, str(item.get("Quantity", "")), 1)
+        pdf.cell(40, 10, str(item.get("Price", "")), 1)
+        pdf.ln()
+
+    nombre_reporte = "reporte_inventario.pdf"
+    pdf.output(nombre_reporte)
+    print(f"Reporte guardado como '{nombre_reporte}'.")
 
 
         
@@ -199,8 +288,13 @@ def consulta_variacion(matrix, articulo, talle, color):
 
 def matiz_slice(matrix):
     for fila in matrix:
-        subset = fila[:5]
-        print(subset)
+        if not isinstance(fila, list):
+            print(f"Error: La fila {fila} es de tipo {type(fila)} en lugar de 'list'.")
+    
+    matrix = [list(fila) if isinstance(fila, set) else fila for fila in matrix]
+
+    return [fila[:5] for fila in matrix]
+
 
 
 def stock_art():
