@@ -6,9 +6,7 @@ import numpy as np
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
 
 def unique_uuid(existing_uuids):
     new_uuid = str(uuid.uuid4())
@@ -84,8 +82,7 @@ def fastadd():
     if not articulo_existe and accion == "ELIMINAR":
         return jsonify({"error": "No se puede eliminar stock de un artículo no existente"}), 404
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
 
 @app.route('/matrix', methods=['DELETE'])
 def delete_stock():
