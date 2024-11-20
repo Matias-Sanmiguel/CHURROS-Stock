@@ -1,0 +1,93 @@
+/* Configuración general */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: #121212; /* Fondo negro */
+    color: #ffffff; /* Texto blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.container {
+    background: #1f1f1f; /* Fondo gris oscuro */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Sombra */
+    width: 400px;
+    max-width: 90%;
+}
+
+/* Encabezados */
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #cccccc;
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #cccccc; /* Gris claro */
+}
+
+/* Inputs y select */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444444; /* Bordes gris oscuro */
+    border-radius: 5px;
+    background: #121212; /* Fondo negro */
+    color: #ffffff; /* Texto blanco */
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border: 1px solid #ffffff; /* Bordes blancos al enfocar */
+    background: #1f1f1f; /* Fondo más claro */
+}
+
+/* Botón */
+button, input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #333333; /* Fondo gris oscuro */
+    border: none;
+    border-radius: 5px;
+    color: #ffffff; /* Texto blanco */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background: #444444; /* Fondo más claro al pasar el mouse */
+    transform: scale(1.02); /* Ligero aumento al pasar el mouse */
+}
+
+/* Sección de resultados */
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #1f1f1f;
+    color: #aaaaaa; /* Gris claro */
+    font-size: 14px;
+    text-align: center;
+}

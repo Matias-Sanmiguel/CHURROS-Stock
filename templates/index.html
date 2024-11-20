@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión y Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
-    <h1>Bienvenido</h1>
+    <div class="login-container">
+        <h1>Bienvenido</h1>
 
-    <h2>Iniciar Sesión</h2>
-    <form id="loginForm" action="/usuario/login" method="POST" onsubmit="return handleFormSubmit(event, 'loginResult')">
-        <label for="userLogin">Usuario:</label>
-        <input type="text" id="userLogin" name="user" required><br><br>
-        <label for="passwordLogin">Contraseña:</label>
-        <input type="password" id="passwordLogin" name="contraseña" required><br><br>
-        <button type="submit">Iniciar Sesión</button>
-    </form>
-    <p id="loginResult"></p>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="/usuario/login" method="POST" onsubmit="return handleFormSubmit(event, 'loginResult')">
+            <input type="text" id="userLogin" name="user" placeholder="Usuario" required>
+            <input type="password" id="passwordLogin" name="pass" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <p id="loginResult"></p>
 
-    <h2>Registrarse</h2>
-    <form id="registerForm" action="/usuario/registrar" method="POST" onsubmit="return handleFormSubmit(event, 'registerResult')">
-        <label for="userRegister">Usuario o Correo Electrónico:</label>
-        <input type="text" id="userRegister" name="email" required><br><br>
-        <label for="passwordRegister">Contraseña:</label>
-        <input type="password" id="passwordRegister" name="contraseña" required><br><br>
-        <button type="submit">Registrarse</button>
-    </form>
-    <p id="registerResult"></p>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="/usuario/registrar" method="POST" onsubmit="return handleFormSubmit(event, 'registerResult')">
+            <input type="text" id="userRegister" name="user" placeholder="Usuario o Correo Electrónico" required>
+            <input type="password" id="passwordRegister" name="pass" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <p id="registerResult"></p>
+    </div>
 
     <script>
         async function handleFormSubmit(event, resultElementId) {
@@ -48,7 +47,7 @@
 
                 if (response.ok && resultElementId === 'loginResult') {
                     alert("Inicio de sesión exitoso");
-                    window.location.href = "/stock";
+                    window.location.href = "/stock.html";
                 }
             } catch (error) {
                 console.error("Error en la solicitud:", error);

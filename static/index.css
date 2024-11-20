@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700');
+
+/* Configuración global */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black; /* Fondo completamente negro */
+  color: white;
+}
+
+/* Inputs */
+input {
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 16px;
+  transition: background 0.3s ease-in, color 0.3s ease-in;
+}
+
+input:focus {
+  background: white;
+  color: black;
+  outline: none;
+  border-bottom: 1px solid white;
+}
+
+/* Botones */
+button {
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in, color 0.3s ease-in;
+  width: 100%;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+/* Formularios */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Contenedor del formulario */
+.login-container {
+  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro del formulario */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  width: 350px;
+}
+
+/* Títulos */
+.login-container h1, .login-container h2 {
+  font-weight: 300;
+  margin-bottom: 20px;
+  text-align: center;
+}

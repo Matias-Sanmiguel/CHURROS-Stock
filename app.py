@@ -165,11 +165,15 @@ def index():
         return f'Bienvenido, {session["user"]}! <a href="/logout">Cerrar sesión</a>'
     return render_template('index.html')
 
+@app.route('/stock.html')
+def stock():
+    return render_template('stock.html')
+
 @app.route('/usuario/registrar', methods=['POST'])
 def registrar_usuario():
     data = request.json
     email = data.get("email")
-    contraseña = data.get("contraseña")
+    contraseña = data.get("pass")
 
     if not email or not contraseña:
         return jsonify({"error": "Correo electrónico y contraseña son requeridos"}), 400
@@ -190,7 +194,7 @@ def iniciar_sesion():
     data = request.json
     print("Datos recibidos:", data)
     email = data.get("user")
-    contraseña = data.get("contraseña")
+    contraseña = data.get("pass")
 
     usuarios = cargar_usuarios()
     print("Verificando usuarios...") 
@@ -199,7 +203,7 @@ def iniciar_sesion():
         print(f"Comparando con: {usuario}")
         if usuario['user'] == email and usuario['pass'] == contraseña:
             session['user'] = email
-            return jsonify({"message": "Inicio de sesión exitoso"}), 200
+            return jsonify({"redirect": "/stock.html"}), 200
 
     return jsonify({"error": "Correo electrónico o contraseña no válidos"}), 401
 
