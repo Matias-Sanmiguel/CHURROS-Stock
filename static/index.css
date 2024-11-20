@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700');
 
-/* Configuración global */
 html, body {
   height: 100%;
   margin: 0;
@@ -9,11 +8,10 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: black; /* Fondo completamente negro */
+  background: black;
   color: white;
 }
 
-/* Inputs */
 input {
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
@@ -33,7 +31,6 @@ input:focus {
   border-bottom: 1px solid white;
 }
 
-/* Botones */
 button {
   border: 1px solid white;
   background: transparent;
@@ -50,23 +47,20 @@ button:hover {
   color: black;
 }
 
-/* Formularios */
 form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-/* Contenedor del formulario */
 .login-container {
-  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro del formulario */
+  background: rgba(0, 0, 0, 0.8); 
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   width: 350px;
 }
 
-/* Títulos */
 .login-container h1, .login-container h2 {
   font-weight: 300;
   margin-bottom: 20px;
