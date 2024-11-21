@@ -169,23 +169,50 @@ def index():
 def stock():
     return render_template('stock.html')
 
+
 @app.route('/usuario/registrar', methods=['POST'])
 def registrar_usuario():
+
+    verificarArroba = lambda correo: correo.find('@') == correo.rfind('@') and '@' in correo
+    verificarAlfanum = lambda correo: correo[:correo.find('@')].isalnum()
+    verificarFinal = lambda correo: correo.endswith('.com')
+    verificarDominio = lambda correo: len(correo[correo.find('@')+1:].rstrip('.com')) > 0
+
+    validarMail = lambda correo: (verificarArroba(correo) and
+                                verificarAlfanum(correo) and
+                                verificarFinal(correo) and
+                                verificarDominio(correo))
+
+    verificarLetrasNumeros = lambda contra: contra.isalnum()
+    verificarCantLetras = lambda contra: len(contra) >= 8
+    verificarMayus = lambda contra: any(c.isupper() for c in contra)
+    verificarLetras = lambda contra: any(c.isalpha() for c in contra)
+    verificarNum = lambda contra: any(c.isdigit() for c in contra)
+
+    validarContraseña = lambda contraseña: (verificarLetrasNumeros(contraseña) and
+                                            verificarCantLetras(contraseña) and
+                                            verificarMayus(contraseña) and
+                                            verificarLetras(contraseña) and
+                                            verificarNum(contraseña))
+                                            
     data = request.json
-    email = data.get("email")
+    email = data.get("user")
     contraseña = data.get("pass")
 
-    if not email or not contraseña:
-        return jsonify({"error": "Correo electrónico y contraseña son requeridos"}), 400
+    if not validarMail(email):
+        return jsonify({"error": "El correo electrónico no es válido."}), 400
+
+    if not validarContraseña(contraseña):
+        return jsonify({"error": "La contraseña no cumple con los requisitos: alfanumérica, mínimo 8 caracteres, al menos una mayúscula, un número y una letra."}), 400
 
     usuarios = cargar_usuarios()
 
-    for usuario in usuarios:
-        if usuario['user'] == email:
-            return jsonify({"error": "El usuario ya existe"}), 400
+    if any(u["user"] == email for u in usuarios):
+        return jsonify({"error": "El correo electrónico ya está registrado."}), 400
 
     usuarios.append({"user": email, "pass": contraseña})
     guardar_usuarios(usuarios)
+
     return jsonify({"message": "Registro exitoso"}), 200
 
 
