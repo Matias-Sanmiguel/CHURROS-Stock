@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tabla.css') }}">
+    <title>Reportes</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reportes - Stock Completo</h1>
+        <div id="table-container">
+        </div>
+        <div id="pagination-controls">
+          <button id="prev-button" class="pagination-btn" onclick="changePage(-1)" disabled>Anterior</button>
+          <span id="page-info">Página 1</span>
+          <button id="next-button" class="pagination-btn" onclick="changePage(1)">Siguiente</button>
+        </div>
+        <button onclick="window.location.href='/stock.html'" class="back-btn">Volver a Gestión de Stock</button>
+      </div>
+      
+      <script>
+        let stockData = []; 
+        let currentPage = 1; 
+        const rowsPerPage = 10;
+      
+        async function loadStock() {
+          try {
+            const response = await fetch('/api/stock');
+            if (!response.ok) throw new Error('Error al cargar los datos del stock.');
+            stockData = await response.json();
+            renderTable();
+          } catch (error) {
+            document.getElementById('table-container').innerHTML = '<p>Error al cargar los datos del stock.</p>';
+          }
+        }
+      
+        function renderTable() {
+          const startIndex = (currentPage - 1) * rowsPerPage;
+          const endIndex = startIndex + rowsPerPage;
+          const currentRows = stockData.slice(startIndex, endIndex);
+      
+          const table = document.createElement('table');
+          table.innerHTML = `
+            <thead>
+              <tr>
+                <th>Artículo</th>
+                <th>Color</th>
+                <th>Talle</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${currentRows
+                .map(
+                  (item) => `
+                <tr>
+                  <td>${item.Articulo}</td>
+                  <td>${item.Color}</td>
+                  <td>${item.Size}</td>
+                  <td>${item.Quantity}</td>
+                  <td>${item.Price}</td>
+                </tr>`
+                )
+                .join('')}
+            </tbody>
+          `;
+      
+          const tableContainer = document.getElementById('table-container');
+          tableContainer.innerHTML = '';
+          tableContainer.appendChild(table);
+      
+          updatePaginationControls();
+        }
+      
+        function updatePaginationControls() {
+          const totalPages = Math.ceil(stockData.length / rowsPerPage);
+          document.getElementById('prev-button').disabled = currentPage === 1;
+          document.getElementById('next-button').disabled = currentPage === totalPages;
+          document.getElementById('page-info').textContent = `Página ${currentPage} de ${totalPages}`;
+        }
+      
+        function changePage(delta) {
+          currentPage += delta;
+          renderTable();
+        }
+      
+        loadStock();
+      </script>
+</body>
+</html>
+
+
+  

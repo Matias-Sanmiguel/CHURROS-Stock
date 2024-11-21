@@ -39,6 +39,7 @@
         <div class="result">
             <p id="result"></p>
         </div>
+        <button type="button" class="button" style="margin-top: 20px;" onclick="window.location.href='/tabla.html'">Ver el stock</button>
         <button type="button" class="button" style="margin-top: 20px;" onclick="descargarReporte()">Descargar Reporte PDF</button>
 </div>
 
@@ -80,22 +81,21 @@
         }
 
         function descargarReporte() {
-        // Realizamos la solicitud GET para generar y descargar el archivo
         fetch('/reporte', {
             method: 'GET',
         })
         .then(response => {
             if (response.ok) {
-                return response.blob();  // Convertimos la respuesta en un blob
+                return response.blob();  
             } else {
                 throw new Error("Error al generar el reporte.");
             }
         })
         .then(blob => {
             const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);  // Creamos un enlace temporal para la descarga
-            link.download = 'reporte_inventario.pdf';  // Nombre del archivo a descargar
-            link.click();  // Simulamos un clic en el enlace para iniciar la descarga
+            link.href = URL.createObjectURL(blob); 
+            link.download = 'reporte_inventario.pdf'; 
+            link.click();  
         })
         .catch(error => {
             console.error("Error:", error);

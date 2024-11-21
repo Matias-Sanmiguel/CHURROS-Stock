@@ -186,6 +186,16 @@ def delete_stock():
     if not articulo_existe:
         return jsonify({"error": "Artículo no encontrado"}), 404
 
+@app.route('/api/stock', methods=['GET'])
+def get_stock():
+    try:
+        with open('archivos.json', 'r') as file:
+            data = json.load(file)
+        return jsonify(data), 200
+    except FileNotFoundError:
+        return jsonify({"error": "El archivo de stock no se encuentra."}), 404
+    except Exception as e:
+        return jsonify({"error": "Error al cargar el stock.", "details": str(e)}), 500
 
 @app.route('/stock/total', methods=['GET'])
 def get_total_stock():
@@ -241,6 +251,9 @@ def index():
 def stock():
     return render_template('stock.html')
 
+@app.route('/tabla.html')
+def tabla():
+    return render_template('tabla.html')
 
 @app.route('/usuario/registrar', methods=['POST'])
 def registrar_usuario():
