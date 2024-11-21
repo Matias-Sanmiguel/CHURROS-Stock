@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Stock - CHURROS</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="/static/stock.css">
 </head>
 <body>
     <div class="container">
@@ -37,10 +37,10 @@
         </form>
 
         <div class="result">
-            <p id="result">Artículo 50 eliminado del stock</p>
+            <p id="result"></p>
         </div>
-        <button type="button" class="button" style="margin-top: 20px;" onclick="window.location.href='/reportes.html'">Ir a Reportes</button>
-    </div>
+        <button type="button" class="button" style="margin-top: 20px;" onclick="descargarReporte()">Descargar Reporte PDF</button>
+</div>
 
     <script>
         async function handleStockOperation(event) {
@@ -78,6 +78,29 @@
                 document.getElementById("result").textContent = "Error al realizar la operación.";
             }
         }
+
+        function descargarReporte() {
+        // Realizamos la solicitud GET para generar y descargar el archivo
+        fetch('/reporte', {
+            method: 'GET',
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.blob();  // Convertimos la respuesta en un blob
+            } else {
+                throw new Error("Error al generar el reporte.");
+            }
+        })
+        .then(blob => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);  // Creamos un enlace temporal para la descarga
+            link.download = 'reporte_inventario.pdf';  // Nombre del archivo a descargar
+            link.click();  // Simulamos un clic en el enlace para iniciar la descarga
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    }
     </script>
 </body>
 </html>

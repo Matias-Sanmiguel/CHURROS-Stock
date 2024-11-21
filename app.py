@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify, render_template, session, redirect, url_for
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for, send_file
 import json
 import uuid
 import numpy as np
+from fpdf import FPDF
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
@@ -35,6 +36,73 @@ def guardar(matrix):
     ]
     with open('archivos.json', 'w') as file:
         json.dump(data_nueva, file, indent=4)
+        
+        
+def consulta_art(matrix, articulo):
+    stock_art = 0
+    for fila in matrix:
+        if fila[0] == articulo:
+            stock_art += fila[3]
+    if stock_art > 0:
+        return f"Consulta de stock para '{articulo}': {stock_art}"
+    else: 
+        return f"El artículo '{articulo}' no fue encontrado en el stock."  
+
+def chequear_stock_general(matrix):
+    stock_total = sum(fila[3] for fila in matrix)
+    return f"El stock total de todos los artículos es: {stock_total}"  
+
+def consulta_variacion(matrix, articulo, talle, color):
+    for fila in matrix:
+        if fila[0] == articulo and fila[2] == talle and fila[1] == color:
+            print(f"El stock actual de la variación '{articulo} - Talle: {talle} - Color: {color}' es: {fila[3]}")
+            return fila[3]
+    print(f"La variación '{articulo} - Talle: {talle} - Color: {color}' no fue encontrada en el stock.")
+    return None
+
+
+class PDF(FPDF):
+    def header(self):
+        self.set_font("Arial", "B", 15)
+        self.cell(0, 10, "Reporte de Inventario", 0, 1, "C")
+        self.ln(10)
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font("Arial", "I", 8)
+        self.cell(0, 10, f"Página {self.page_no()}", 0, 0, "C")
+
+def generar_reporte_json(nombre_archivo_json):
+    try:
+        with open(nombre_archivo_json, "r") as archivo:
+            data = json.load(archivo)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error al cargar el archivo JSON: {e}")
+        return
+
+    pdf = PDF()
+    pdf.add_page()
+
+    pdf.set_fill_color(200, 220, 255)
+    pdf.set_font("Arial", "B", 10)
+    pdf.cell(40, 10, "Artículo", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Color", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Talle", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Cantidad", 1, 0, "C", 1)
+    pdf.cell(40, 10, "Precio", 1, 1, "C", 1)
+
+    pdf.set_font("Arial", "", 10)
+    for item in data:
+        pdf.cell(40, 10, str(item.get("Articulo", "")), 1)
+        pdf.cell(40, 10, str(item.get("Color", "")), 1)
+        pdf.cell(40, 10, str(item.get("Size", "")), 1)
+        pdf.cell(40, 10, str(item.get("Quantity", "")), 1)
+        pdf.cell(40, 10, str(item.get("Price", "")), 1)
+        pdf.ln()
+
+    nombre_reporte = "reporte_inventario.pdf"
+    pdf.output(nombre_reporte)
+    print(f"Reporte guardado como '{nombre_reporte}'.")
 
 @app.route('/fastadd', methods=['POST'])
 def fastadd():
@@ -83,6 +151,12 @@ def fastadd():
         return jsonify({"error": "No se puede eliminar stock de un artículo no existente"}), 404
 
 
+@app.route('/reporte', methods=['GET'])
+def generar_reporte():
+    nombre_archivo_json = "archivos.json"
+    nombre_reporte = "reporte_inventario.pdf"
+    generar_reporte_json(nombre_archivo_json) 
+    return send_file(nombre_reporte, as_attachment=True)
 
 @app.route('/matrix', methods=['DELETE'])
 def delete_stock():
@@ -111,17 +185,6 @@ def delete_stock():
 
     if not articulo_existe:
         return jsonify({"error": "Artículo no encontrado"}), 404
-
-@app.route('/api/stock', methods=['GET'])
-def get_stock():
-    try:
-        with open('archivos.json', 'r') as file:
-            data = json.load(file)
-        return jsonify(data), 200
-    except FileNotFoundError:
-        return jsonify({"error": "El archivo de stock no se encuentra."}), 404
-    except Exception as e:
-        return jsonify({"error": "Error al cargar el stock.", "details": str(e)}), 500
 
 
 @app.route('/stock/total', methods=['GET'])
@@ -172,17 +235,12 @@ def guardar_usuarios(credenciales):
 
 @app.route('/')
 def index():
-    if 'user' in session:
-        return f'Bienvenido, {session["user"]}!'
     return render_template('index.html')
 
 @app.route('/stock.html')
 def stock():
     return render_template('stock.html')
 
-@app.route('/reportes.html')
-def reportes():
-    return render_template('reportes.html')
 
 @app.route('/usuario/registrar', methods=['POST'])
 def registrar_usuario():
@@ -212,6 +270,7 @@ def registrar_usuario():
     data = request.json
     email = data.get("user")
     contraseña = data.get("pass")
+    print("Datos recibidos para registrar:", data)
 
     if not validarMail(email):
         return jsonify({"error": "El correo electrónico no es válido."}), 400
