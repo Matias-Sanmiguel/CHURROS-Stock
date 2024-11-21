@@ -162,13 +162,16 @@ def guardar_usuarios(credenciales):
 @app.route('/')
 def index():
     if 'user' in session:
-        return f'Bienvenido, {session["user"]}! <a href="/logout">Cerrar sesión</a>'
+        return f'Bienvenido, {session["user"]}!'
     return render_template('index.html')
 
 @app.route('/stock.html')
 def stock():
     return render_template('stock.html')
 
+@app.route('/reportes.html')
+def reportes():
+    return render_template('reportes.html')
 
 @app.route('/usuario/registrar', methods=['POST'])
 def registrar_usuario():
