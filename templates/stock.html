@@ -40,6 +40,7 @@
             <p id="result"></p>
         </div>
         <button type="button" class="button" style="margin-top: 20px;" onclick="window.location.href='/tabla.html'">Ver el stock</button>
+        <button type="button" class="button" style="margin-top: 20px;" onclick="convertir_json_a_csv()">Exportar CSV</button>
         <button type="button" class="button" style="margin-top: 20px;" onclick="descargarReporte()">Descargar Reporte PDF</button>
 </div>
 
@@ -101,6 +102,30 @@
             console.error("Error:", error);
         });
     }
+    async function convertir_json_a_csv() {
+    try {
+        const response = await fetch('/descargarcsv', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (response.ok) {
+            const blob = await response.blob(); 
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'inventario.csv'; 
+            link.click(); 
+        } else {
+            throw new Error("Error al generar el archivo CSV.");
+        }
+    } catch (error) {
+        console.error("Error al exportar CSV:", error);
+        alert("Hubo un error al exportar el archivo CSV.");
+    }
+}
+
     </script>
 </body>
 </html>

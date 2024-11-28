@@ -3,6 +3,8 @@ import json
 import uuid
 import numpy as np
 from fpdf import FPDF
+import os
+import csv
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
@@ -157,6 +159,32 @@ def generar_reporte():
     nombre_reporte = "reporte_inventario.pdf"
     generar_reporte_json(nombre_archivo_json) 
     return send_file(nombre_reporte, as_attachment=True)
+
+
+@app.route('/descargarcsv', methods=['POST'])
+def convertir_json_a_csv():
+    try:
+        nombre_archivo_json = "archivos.json"
+        with open(nombre_archivo_json, 'r', encoding='utf-8') as json_file:
+            data = json.load(json_file)
+
+
+        if not isinstance(data, list):
+            return jsonify({"error": "El archivo JSON debe contener una lista de objetos"}), 400
+
+
+        csv_file = 'inventario.csv'
+        with open(csv_file, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            headers = data[0].keys()
+            writer.writerow(headers)
+            for row in data:
+                writer.writerow(row.values())
+        return send_file(csv_file, as_attachment=True, download_name=csv_file)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route('/matrix', methods=['DELETE'])
 def delete_stock():
