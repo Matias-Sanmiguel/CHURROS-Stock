@@ -271,6 +271,10 @@ def guardar_usuarios(credenciales):
     with open('credenciales.json', 'w') as archivo:
         json.dump(credenciales, archivo, indent=4)
 
+@app.route('/bitcoin.html')
+def bitcoin():
+    return render_template('bitcoin.html')
+
 @app.route('/')
 def index():
     return render_template('index.html')
